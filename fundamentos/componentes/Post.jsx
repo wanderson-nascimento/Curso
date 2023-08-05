@@ -7,24 +7,30 @@ import ptBR from 'date-fns/locale/pt-BR'
 
 const comments = [
     {
-        
+        name: 'Wanderson Nascimento',
+        imageURL: 'https://avatars.githubusercontent.com/u/88212277?v=4',
+        commentAt: new Date('2023-08-05 22:00:00'),
+        commentContent: 'Ficou excelente esse comentário'
     },
     {
-
+        name: 'Wanderson Aragão',
+        imageURL: 'https://avatars.githubusercontent.com/u/35743503?v=4',
+        commentAt: new Date('2023-07-20 22:00:00'),
+        commentContent: 'Outro comentário interessante'
     }
 ]
 
 export function Post({ author, content, publishedAt }) {
-     const publishedDataFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
-         locale: ptBR,
-     })
+    const publishedDataFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+        locale: ptBR,
+    })
 
-     const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
-         locale: ptBR,
-         addSuffix: true
-     })
+    const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+        locale: ptBR,
+        addSuffix: true
+    })
 
-     console.log(publishedDataFormatted)
+    console.log(comments)
 
     return (
         <article className={styles.post}>
@@ -59,8 +65,15 @@ export function Post({ author, content, publishedAt }) {
             </footer>
 
             <div className={styles.commentList}>
-                <Comment />
-                <Comment />
+                {comments.map(comment => {
+                    return(
+                        <Comment
+                         name={comment.name}
+                         imageURL={comment.imageURL}
+                         commetedAt={comment.commentAt}
+                         commentContent={comment.commentContent}
+                        />)
+                })}
             </div>
         </article>
     )

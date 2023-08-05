@@ -3,23 +3,21 @@ import { Avatar } from "./Avatar"
 import styles from "./Comment.module.css"
 
 
-//name
-//
 
-export function Comment() {
+export function Comment({name, imageURL, commetedAt, commentContent}) {
     return (
         <div className={styles.comment}>
             <Avatar 
                 hasBorder={false}
-                src="https://avatars.githubusercontent.com/u/88212277?v=4"
+                src={imageURL}
                 alt="Foto do perfil do post"
             />
             <div className={styles.commentBox}>
                 <div className={styles.commentContent}>
                     <header>
                         <div className={styles.authorAndTime}>
-                            <strong>Devon Lane</strong>
-                            <time title="23 de julho às 08:13" dataTime="2023-07-23 08:24:11" >Cerca de 2h</time>
+                            <strong>{name}</strong>
+                            <time title={commetedAt} dataTime="2023-07-23 08:24:11" >Cerca de 2h</time>
                         </div>
 
                         <button title="Deletar comentário">
@@ -28,7 +26,7 @@ export function Comment() {
                     </header>
 
                     <p>
-                        Muito bom Devon, parabéns!! 👏👏
+                        {commentContent}
                     </p>
 
                     <footer>
