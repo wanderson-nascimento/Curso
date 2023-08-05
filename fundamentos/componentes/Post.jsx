@@ -5,17 +5,26 @@ import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 
-export function Post({ author, content, publishAt }) {
-    const publishedDataFormatted = format(publishAt, "d 'de' LLLL 'às' HH:mm'h'", {
-        locale: ptBR,
-        addSuffix: true
-    })
+const comments = [
+    {
+        
+    },
+    {
 
-    const publishedDateRelativeToNow = formatDistanceToNow(publishAt, {
-        locale: ptBR,
-    })
+    }
+]
 
-    console.log(publishedDataFormatted)
+export function Post({ author, content, publishedAt }) {
+     const publishedDataFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+         locale: ptBR,
+     })
+
+     const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+         locale: ptBR,
+         addSuffix: true
+     })
+
+     console.log(publishedDataFormatted)
 
     return (
         <article className={styles.post}>
@@ -30,7 +39,7 @@ export function Post({ author, content, publishAt }) {
                         <span>{author.role}</span>
                     </div>
                 </div>
-                <time title={publishedDataFormatted} dataTime={publishAt.toISOString()} >{publishedDateRelativeToNow}</time>
+                <time title={publishedDataFormatted} dataTime={publishedAt.toISOString()} >{publishedDateRelativeToNow}</time>
             </header>
             <div className={styles.content}>
                 <p>{content.paragraph}</p>
