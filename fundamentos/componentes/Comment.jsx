@@ -9,15 +9,15 @@ export function Comment({name, imageURL, commetedAt, commentContent}) {
         <div className={styles.comment}>
             <Avatar 
                 hasBorder={false}
-                src={imageURL}
+                src={'https://avatars.githubusercontent.com/u/88212277?v=4'}
                 alt="Foto do perfil do post"
             />
             <div className={styles.commentBox}>
                 <div className={styles.commentContent}>
                     <header>
                         <div className={styles.authorAndTime}>
-                            <strong>{name}</strong>
-                            <time title={commetedAt} dataTime="2023-07-23 08:24:11" >Cerca de 2h</time>
+                            <strong>{'Wanderson Nascimento'}</strong>
+                            <time title={'2023-08-05 22:00:00'} datatime="2023-07-23 08:24:11" >Cerca de 2h</time>
                         </div>
 
                         <button title="Deletar comentário">
