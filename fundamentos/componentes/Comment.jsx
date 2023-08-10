@@ -4,10 +4,17 @@ import styles from "./Comment.module.css"
 
 
 
-export function Comment({name, imageURL, commetedAt, commentContent}) {
+export function Comment({ name, imageURL, commetedAt, content, onDeleteComment }) {
+
+    function handleDeleteComment() {
+        console.log(`Chamada de função handleDeleteComment ${content} `)
+        onDeleteComment(content)
+    }
+
+
     return (
         <div className={styles.comment}>
-            <Avatar 
+            <Avatar
                 hasBorder={false}
                 src={'https://avatars.githubusercontent.com/u/88212277?v=4'}
                 alt="Foto do perfil do post"
@@ -20,13 +27,13 @@ export function Comment({name, imageURL, commetedAt, commentContent}) {
                             <time title={'2023-08-05 22:00:00'} datatime="2023-07-23 08:24:11" >Cerca de 2h</time>
                         </div>
 
-                        <button title="Deletar comentário">
+                        <button onClick={handleDeleteComment} title="Deletar comentário">
                             <Trash size={24} />
                         </button>
                     </header>
 
                     <p>
-                        {commentContent}
+                        {content}
                     </p>
 
                     <footer>
