@@ -6,21 +6,6 @@ import './global.css'
 import styles from './App.module.css'
 
 
-//id: number
-//author: {
-//name: string
-//role: string
-//imageURL: string
-//} 
-//content:{
-// paragraph: string
-// link: string
-// hashtags: string
-//}
-//publishAt: string
-//
-// }
-
 const posts = [
   {
     id: 1,
@@ -34,7 +19,7 @@ const posts = [
       link: "jane.design/doctorcare",
       hashtags: "#novoprojeto #nlw #rocketseat"
     },
-    publishAt: '2023-07-23 08:24:11',
+    publishedAt: new Date('2023-06-03 22:00:00'),
   },
   {
     id: 2,
@@ -48,7 +33,7 @@ const posts = [
       link: "jane.design/doctorcare",
       hashtags: "#uiux userexperience"
     },
-    publishAt: '2023-07-24 08:24:11',
+    publishedAt: new Date('2023-05-03 20:00:00'),
   }
 ]
 
@@ -64,9 +49,10 @@ export function App() {
           {posts.map(post => {
             return (
               <Post
+                key={post.id}
                 author={post.author}
                 content={post.content}
-                publishAt={post.publishAt}
+                publishedAt={post.publishedAt}
               />
             )
           })}
