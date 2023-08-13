@@ -24,7 +24,7 @@ export function Comment() {
                     </header>
 
                     <p>
-                        Muito bom Devon, parabéns!! 👏👏
+                        Muito bom fulano, parabéns!! 👏👏
                     </p>
 
                     <footer>
