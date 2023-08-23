@@ -1,7 +1,9 @@
 import {Header} from '../components/Header'
 import {Search} from '../components/Search'
 import {Main} from '../components/Main'
-import './App.module.css'
+
+import styles from './App.module.css'
+import './global.css'
 
 function App() {
 
