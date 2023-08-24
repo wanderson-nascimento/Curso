@@ -1,8 +1,14 @@
+import styles from './Header.module.css'
+import rocket from '../public/rocket.png'
 
-export function Header(){
-    return(
+
+export function Header() {
+    return (
         <>
-            todo
+            <header className={styles.header}>
+                <img src={rocket} alt='Logo de foguete'/>
+                <p className={styles.azul}>to</p><p className={styles.roxo}>do</p>
+            </header>
         </>
     )
 }

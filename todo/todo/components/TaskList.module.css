@@ -1,0 +1,13 @@
+.tasklist{
+    background-color: var(--gray-400);
+    color: var(--gray-300);
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+    padding-left: 5rem;
+}
+
+.taskList main p {
+    color: var(blue)
+}
+

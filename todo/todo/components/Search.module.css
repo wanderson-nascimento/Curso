@@ -1,10 +1,21 @@
-root{
-    background-color: var(--gray-300) ;
+.search{
+    color: var(--gray-700) ;
+    background-color: var(--gray-700);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.serch input{
+    padding: 20px;
 }
 
 .search button{
     background-color: var(--blue-dark);
-    color: var(--gray-100)
+    color: var(--gray-100);
+    
+    
 }
 
 .search button:hover{
