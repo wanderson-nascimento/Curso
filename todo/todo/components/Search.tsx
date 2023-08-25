@@ -5,10 +5,10 @@ export function Search() {
     return (
         <>
             <main className={styles.search}>
-                <input
+                <input 
                     placeholder="Adicione uma nova tarefa"
                 />
-                <button > Criar +
+                <button> Criar +
                 </button>
             </main >
         </>

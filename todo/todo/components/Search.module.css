@@ -1,24 +1,28 @@
 .search{
-    color: var(--gray-700) ;
-    background-color: var(--gray-700);
+    color: var(--gray-300);
+
     align-items: center;
     display: flex;
     justify-content: center;
+    margin-top: -2rem;
 
 }
 
-.serch input{
-    padding: 20px;
+input{
+    width: 40rem;
+    height: 3.375rem;
+    margin: 0.5rem;
+    border-radius: 8px;
 }
 
-.search button{
+.search button {
     background-color: var(--blue-dark);
     color: var(--gray-100);
-    
-    
+    width: 90px;
+    height: 52px;
 }
 
-.search button:hover{
+.search button:hover {
     background-color: var(--blue);
     color: var(--gray-100) 
 }

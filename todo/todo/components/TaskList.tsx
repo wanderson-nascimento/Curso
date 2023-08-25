@@ -4,7 +4,7 @@ import styles from './TaskList.module.css'
 export function TaskList(){
     return(
         <article className={styles.tasklist}>
-            <header>
+            <header className={styles.header}>
                 <p>Tarefas criardas 0</p>
                 <p>Concluídas 0</p>
             </header>
