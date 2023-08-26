@@ -25,10 +25,19 @@
   font-family: "Inter", sans-serif;
 }
 
-body
-{
+body {
   background: var(--gray-600);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   flex-direction: column;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
 }

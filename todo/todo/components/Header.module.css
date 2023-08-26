@@ -6,19 +6,20 @@
     padding: 1.25rem 0;
     width: 90rem;
     height: 12.5rem;
-    font-size: 50px;
+    font-size: 40px;
+    font-weight: 700;
 
 }
 
-.header p.roxo{
+.roxo{
     color: var(--purple-dark)
 }
 
 
-.header p.azul{
-    color: var(--purple-dark)
+.azul{
+    color: var(--blue)
 }
 
 .header img{
-    padding: 2rem;
+    padding: 0.75rem;
 }
