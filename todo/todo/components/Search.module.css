@@ -12,7 +12,13 @@ input{
     width: 40rem;
     height: 3.375rem;
     margin: 0.5rem;
+    padding: 1rem;
     border-radius: 8px;
+    line-height: 1.4;
+    flex-shrink: 0;
+    color: var(--gray-700);
+    background-color: var(--gray-100);
+
 }
 
 .search button {
@@ -20,6 +26,8 @@ input{
     color: var(--gray-100);
     width: 90px;
     height: 52px;
+    font-weight: bold;
+    font-size: 0.875;
 }
 
 .search button:hover {
