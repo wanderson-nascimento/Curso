@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './Search.module.css'
+import plus from '../src/assets/plus.svg'
 
 export function Search() {
     return (
@@ -8,7 +9,7 @@ export function Search() {
                 <input 
                     placeholder="Adicione uma nova tarefa"
                 />
-                <button> Criar +
+                <button> Criar <img src={plus} />
                 </button>
             </main >
         </>
