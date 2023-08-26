@@ -1,14 +1,33 @@
 .tasklist{
-    background-color: var(--gray-400);
-    color: var(--gray-300);
-    align-items: flex-start;
-    display: flex;
-    justify-content: center;
-    padding-left: 5rem;
+    background-color: var(--gray-600); 
+    /* align-items: center;  */
+    /* display: flex;
+    justify-content: space-between; */
+    /* flex-direction: column; */
+    width: 46rem;
+    margin: 0 22rem 0 22rem;
+
 }
 
-.header{
-    color: var(blue);
+.tasklist header{
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    margin-left: 0.5rem;
+}
+
+.tasklist main{
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    color: var(--gray-300);
+}
+
+.tasklist main img{
+    margin-top: 24px;
+    margin-bottom: 1rem;
 }
 
