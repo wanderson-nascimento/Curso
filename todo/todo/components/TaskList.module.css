@@ -9,7 +9,7 @@
 
 }
 
-.tasklist header {
+/* .tasklist header {
     color: var(--gray-100);
     font-weight: 700;
     font-size: 0.875rem;
@@ -17,9 +17,9 @@
     justify-content: space-between;
     margin-bottom: 24px;
     margin-left: 0.5rem;
-}
+} */
 
-.azul{
+/* .azul{
     color: var(--blue);
     margin-right: 0.5rem;
 }
@@ -27,13 +27,13 @@
 .roxo{
     color: var(--purple);
     margin-right: 0.5rem;
-}
+} */
 
-.headerelements{
+/* .headerelements{
     display: flex;
-}
+} */
 
-.tasklist header span {
+/* .tasklist header span {
     display: flex;
     padding: 2px 8px;
     flex-direction: column;
@@ -42,7 +42,7 @@
     gap: 10px;
     border-radius: 999px;
 background: var(--gray-400);
-}
+} */
 
 .tasklist main {
     display: flex;
@@ -56,9 +56,11 @@ background: var(--gray-400);
 
 .element {
     display: flex;
+    justify-content: space-between;
     padding: 16px;
     align-items: flex-start;
-    gap: 12px;
+
+    margin-bottom: 12px;
     align-self: stretch;
     border-radius: 8px;
     border: 1px solid var(--gray-400, #333);
@@ -75,10 +77,16 @@ background: var(--gray-400);
     align-items: center;
 }
 
+.elementkey{
+    display: flex;
+    justify-content: space-between;
+}
+
 .element span {
     color: var(--gray-100, #F2F2F2);
     font-family: Inter;
     font-size: 14px;
+    padding: 3.273px;
     font-style: normal;
     font-weight: 400;
     line-height: 140%;

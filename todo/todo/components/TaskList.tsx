@@ -16,12 +16,13 @@ export function TaskList({ key, isFinished, text }: listaDeTarefasProps) {
         <div className={styles.tasklist}>
             <main>
                 <div className={styles.element}>
-                    <label>
+                    <label className={styles.elementkey}>
                         <input type="checkbox" />
                         <span>
                             {text}
                         </span>
                     </label>
+
                     <img src={trash} alt="icone de lixo" />
                 </div>
             </main>
