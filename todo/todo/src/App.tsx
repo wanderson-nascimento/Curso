@@ -6,26 +6,39 @@ import styles from './App.module.css'
 
 import './global.css'
 
-const listaDeTarefas = [
-  // {
-  //   id: 1,
-  //   isFinished: false,
-  //   text: 'Wanderson Nascimento turpis turpis semper. Duis vel sed fames integer.',
-  // },
-  // {
-  //   id: 2,
-  //   isFinished: false,
-  //   text: 'Nayara loiuse Floriano Nascimento libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+interface listaDeTarefasObj{
+  id: number,
+  isFinished: boolean,
+  text: string,
+}
 
-  // },
-  // {
-  //   id: 3,
-  //   isFinished: false,
-  //   text: 'Eita coizinha linda de jesus libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+type listaDeTarefasProps = listaDeTarefasObj[] 
 
-  // }
+const listaDeTarefas:listaDeTarefasProps = [
+  {
+    id: 1,
+    isFinished: false,
+    text: 'Wanderson Nascimento turpis turpis semper. Duis vel sed fames integer.',
+  },
+  {
+    id: 2,
+    isFinished: true,
+    text: 'Nayara loiuse Floriano Nascimento libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+
+  },
+  {
+    id: 3,
+    isFinished: true,
+    text: 'Eita coizinha linda de jesus libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+
+  }
 ]
 
+  
+  const quantidadeCompletas:listaDeTarefasProps = 
+  listaDeTarefas.filter(
+  tarefa => (tarefa.isFinished === true)
+)
 
 function App() {
 
@@ -36,10 +49,10 @@ function App() {
         <Search />
         <header className={styles.tasklistheader}>
           <div className={styles.headerelements}>
-            <p className={styles.azul}>Tarefas criardas</p> <span>0</span>
+            <p className={styles.azul}>Tarefas criardas</p> <span>{listaDeTarefas.length}</span>
           </div>
           <div className={styles.headerelements}>
-            <p className={styles.roxo}>Concluídas</p> <span>0</span>
+            <p className={styles.roxo}>Concluídas</p> <span>{quantidadeCompletas.length} de {listaDeTarefas.length}</span>
           </div>
         </header>
         {listaDeTarefas.length > 0 ?
