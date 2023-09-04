@@ -9,6 +9,13 @@
 
 }
 
+.search form{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
 input{
     width: 40rem;
     height: 3.375rem;

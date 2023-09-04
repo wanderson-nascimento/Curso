@@ -3,6 +3,7 @@ import { Search } from '../components/Search'
 import { TaskList } from '../components/TaskList'
 import clipboard from '../src/assets/Clipboard.png'
 import styles from './App.module.css'
+import React, {useState} from 'react'
 
 import './global.css'
 
@@ -40,13 +41,23 @@ const listaDeTarefas:listaDeTarefasProps = [
   tarefa => (tarefa.isFinished === true)
 )
 
+
+
+
 function App() {
+
+  const [mensagem, setMensagem] = useState('');
+
+  function onAddTask(novaMensagem: string){
+    setMensagem(novaMensagem)
+    console.log(`mensagem dentro da função onAddTask de App(pai) ${mensagem} `)
+  }
 
   return (
     <>
       <Header />
       <div>
-        <Search />
+        <Search addTask={onAddTask}/>
         <header className={styles.tasklistheader}>
           <div className={styles.headerelements}>
             <p className={styles.azul}>Tarefas criardas</p> <span>{listaDeTarefas.length}</span>
