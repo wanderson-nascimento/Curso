@@ -47,14 +47,23 @@ function App() {
 
   const [mensagem, setMensagem] = useState('');
 
-  function modifyObject(listaDeTarefas:listaDeTarefasObj[]){
-    console.log(mensagem, listaDeTarefas )
-    const newListaDeTarefas = listaDeTarefas
+  const newListaDeTarefas = listaDeTarefas;
+
+  function modifyObject(listaDeTarefas:listaDeTarefasObj[], novaMensagem:string){
+    newListaDeTarefas.push(
+      {
+        id: listaDeTarefas.length + 1,
+        isFinished: false,
+        text: novaMensagem,  
+      }
+    )
+    console.log(mensagem, listaDeTarefas)
+    setListaDeTarefas(newListaDeTarefas)
   }
 
-  function onAddTask(novaMensagem: string, listaDeTarefas:listaDeTarefasObj[]){
+  function onAddTask(novaMensagem: string){
     setMensagem(novaMensagem)
-    modifyObject(listaDeTarefas)
+    modifyObject(listaDeTarefas, novaMensagem)
   }
 
 
@@ -63,8 +72,6 @@ function App() {
       <Header />
       <div>
         <Search addTask={onAddTask}/>
-        <h1>Mensagem do Pai: {mensagem}</h1>
-        <h2>{newListaDeTarefas[0].text}</h2>
         <header className={styles.tasklistheader}>
           <div className={styles.headerelements}>
             <p className={styles.azul}>Tarefas criardas</p> <span>{listaDeTarefas.length}</span>
