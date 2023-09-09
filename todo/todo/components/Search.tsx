@@ -11,11 +11,6 @@ export function Search(props) {
         props.addTask(newTask)
     }
 
-    // function addTask(newTask: string){
-    //     console.log('adionar a task', newTask)
-
-    // }
-
     function handleNewTask(event){
         setNewTask(event.target.value)
     }

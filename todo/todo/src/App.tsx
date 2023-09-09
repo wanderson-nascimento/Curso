@@ -13,51 +13,58 @@ interface listaDeTarefasObj{
   text: string,
 }
 
-type listaDeTarefasProps = listaDeTarefasObj[] 
-
-const listaDeTarefas:listaDeTarefasProps = [
-  {
-    id: 1,
-    isFinished: false,
-    text: 'Wanderson Nascimento turpis turpis semper. Duis vel sed fames integer.',
-  },
-  {
-    id: 2,
-    isFinished: true,
-    text: 'Nayara loiuse Floriano Nascimento libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-
-  },
-  {
-    id: 3,
-    isFinished: true,
-    text: 'Eita coizinha linda de jesus libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-
-  }
-]
-
-  
-  const quantidadeCompletas:listaDeTarefasProps = 
-  listaDeTarefas.filter(
-  tarefa => (tarefa.isFinished === true)
-)
-
-
 
 
 function App() {
 
+  const [listaDeTarefas, setListaDeTarefas] = useState<listaDeTarefasObj[]>([
+    {
+      id: 1,
+      isFinished: false,
+      text: 'Wanderson Nascimento turpis turpis semper. Duis vel sed fames integer.',
+    },
+    {
+      id: 2,
+      isFinished: true,
+      text: 'Nayara loiuse Floriano Nascimento libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+  
+    },
+    {
+      id: 3,
+      isFinished: true,
+      text: 'Eita coizinha linda de jesus libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+  
+    }
+  ])
+  
+    
+    const quantidadeCompletas:Array<listaDeTarefasObj> = 
+    listaDeTarefas.filter(
+    tarefa => (tarefa.isFinished === true)
+  )
+  
+  
+
   const [mensagem, setMensagem] = useState('');
 
-  function onAddTask(novaMensagem: string){
-    setMensagem(novaMensagem)
-    console.log(`mensagem dentro da função onAddTask de App(pai) ${mensagem} `)
+  function modifyObject(listaDeTarefas:listaDeTarefasObj[]){
+    console.log(mensagem, listaDeTarefas )
+    const newListaDeTarefas = listaDeTarefas
   }
+
+  function onAddTask(novaMensagem: string, listaDeTarefas:listaDeTarefasObj[]){
+    setMensagem(novaMensagem)
+    modifyObject(listaDeTarefas)
+  }
+
 
   return (
     <>
       <Header />
       <div>
         <Search addTask={onAddTask}/>
+        <h1>Mensagem do Pai: {mensagem}</h1>
+        <h2>{newListaDeTarefas[0].text}</h2>
         <header className={styles.tasklistheader}>
           <div className={styles.headerelements}>
             <p className={styles.azul}>Tarefas criardas</p> <span>{listaDeTarefas.length}</span>
