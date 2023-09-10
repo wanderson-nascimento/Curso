@@ -1,5 +1,4 @@
 .search{
-    color: var(--gray-300);
 
     align-items: center;
     display: flex;
@@ -16,7 +15,8 @@
 }
 
 
-input{
+.search input{
+
     width: 40rem;
     height: 3.375rem;
     margin: 0.5rem;
@@ -24,11 +24,19 @@ input{
     border-radius: 8px;
     line-height: 1.4;
     flex-shrink: 0;
-    color: var(--gray-700);
-    background-color: var(--gray-500);
     border: 1px solid var(--gray-700);
 
+    background: var(--gray-500);
+    color: var(--gray-300)
+    
 }
+
+.search input:focus{
+    border: 1px solid var(--purple-dark); /* Define uma borda de foco personalizada em azul quando o input está em foco */
+    outline: none;
+
+}
+
 
 .search button {
     background-color: var(--blue-dark);

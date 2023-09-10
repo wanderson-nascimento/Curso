@@ -1,27 +1,10 @@
-.wrapper {
-  max-width: 70rem;
-  margin: 2rem auto;
-  padding: 0 1rem;
-
-  display: grid;
-  grid-template-columns: 256px 1fr;
-  gap: 2rem;
-}
-
-@media (max-width: 768px) {
-  html {
-    font-size: 87.5%;
-  }
-
-  .wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
 
 .tasklistheader {
+  max-width: 90rem;
   display: flex;
   justify-content: center;
+
+
   margin-bottom: 24px;
 
 
@@ -38,10 +21,12 @@
 .roxo {
   color: var(--purple);
   margin-right: 0.5rem;
+  margin-left: 450px;
 }
 
 .headerelements {
   display: flex;
+  align-items: center;
 }
 
 
@@ -57,13 +42,16 @@
 
 
 .headerelements span {
-  color: var(--gray-100, #F2F2F2);
-  font-family: Inter;
-  font-size: 14px;
-  padding: 3.273px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
+  display: flex;
+  padding: 2px 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 999px;
+  background: var(--Gray-400, #333);
+
 }
 
 .element img {

@@ -3,7 +3,7 @@ import { Search } from '../components/Search'
 import { TaskList } from '../components/TaskList'
 import clipboard from '../src/assets/Clipboard.png'
 import styles from './App.module.css'
-import React, {useState} from 'react'
+import {useState} from 'react'
 
 import './global.css'
 
@@ -32,7 +32,7 @@ function App() {
     {
       id: 3,
       isFinished: true,
-      text: 'Eita coizinha linda de jesus libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+      text: 'Varios testes turpis semper. Duis vel sed fames integer.',
   
     }
   ])
@@ -66,12 +66,27 @@ function App() {
     modifyObject(listaDeTarefas, novaMensagem)
   }
 
+  function deleteTask(taskToDelete:string){
+    const  tasksWithoutDeletedOne = listaDeTarefas.filter(
+      task => {
+        return task.text !== taskToDelete
+      }
+    )
+      for(let i=0; i<tasksWithoutDeletedOne.length; i++){
+        tasksWithoutDeletedOne[i].id = i+1;
+        console.log(tasksWithoutDeletedOne)
+      }
+    setListaDeTarefas(tasksWithoutDeletedOne)
+  }
+
 
   return (
     <>
       <Header />
       <div>
+        
         <Search addTask={onAddTask}/>
+        
         <header className={styles.tasklistheader}>
           <div className={styles.headerelements}>
             <p className={styles.azul}>Tarefas criardas</p> <span>{listaDeTarefas.length}</span>
@@ -89,6 +104,7 @@ function App() {
                     key={tarefa.id}
                     isFinished={tarefa.isFinished}
                     text={tarefa.text}
+                    onDeleteTask={deleteTask}
                   />
                 )
               })

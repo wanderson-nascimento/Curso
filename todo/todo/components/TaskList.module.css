@@ -1,48 +1,9 @@
 .tasklist {
     background-color: var(--gray-600);
-    /* align-items: center;  */
-    /* display: flex;
-    justify-content: space-between; */
-    /* flex-direction: column; */
     width: 46rem;
     margin: 0 22rem 0 22rem;
 
 }
-
-/* .tasklist header {
-    color: var(--gray-100);
-    font-weight: 700;
-    font-size: 0.875rem;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 24px;
-    margin-left: 0.5rem;
-} */
-
-/* .azul{
-    color: var(--blue);
-    margin-right: 0.5rem;
-}
-
-.roxo{
-    color: var(--purple);
-    margin-right: 0.5rem;
-} */
-
-/* .headerelements{
-    display: flex;
-} */
-
-/* .tasklist header span {
-    display: flex;
-    padding: 2px 8px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 999px;
-background: var(--gray-400);
-} */
 
 .tasklist main {
     display: flex;
@@ -92,9 +53,25 @@ background: var(--gray-400);
     line-height: 140%;
 }
 
-.element img {
-    width: 12.478px;
-    height: 14px;
+.element button {
+    color: var(--gray-300);
+    background-color: transparent;
+    display: flex;
+    padding: 5px 5.522px 5px 6px;
+    justify-content: center;
+    align-items: center;
     flex-shrink: 0;
-    margin: 1rem;
+
+    border-radius: 4px;
+}
+
+
+.element button:hover {
+    color: var(--danger);
+    background-color: var(--gray-400);
+}
+
+.element button checkbox {
+    color: aqua;
+    background-color: coral;
 }
