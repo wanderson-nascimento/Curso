@@ -79,6 +79,24 @@ function App() {
     setListaDeTarefas(tasksWithoutDeletedOne)
   }
 
+  function changeStateTask(id:number){
+    console.log('função para mudar de estado a task',id)
+    const taskListChanged = listaDeTarefas.map(task =>{
+      if(task.id === id){
+        const newCheckedState = !task.isFinished
+        
+        console.log('Novo estado é', newCheckedState)
+        return(
+          {...task, isFinished: newCheckedState}
+
+        ) 
+
+      }
+        return task
+    })
+    setListaDeTarefas(taskListChanged)
+
+  }
 
   return (
     <>
@@ -101,10 +119,11 @@ function App() {
               listaDeTarefas.map(tarefa => {
                 return (
                   <TaskList
-                    key={tarefa.id}
+                    id={tarefa.id}
                     isFinished={tarefa.isFinished}
                     text={tarefa.text}
                     onDeleteTask={deleteTask}
+                    onCheckTask={changeStateTask}
                   />
                 )
               })

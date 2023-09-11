@@ -71,7 +71,12 @@
     background-color: var(--gray-400);
 }
 
-.element button checkbox {
-    color: aqua;
-    background-color: coral;
+.elementkey button {
+    color:var(--blue);
+    outline: none;
+}
+
+.elementkey button:hover {
+    color:var(--blue-dark);
+    outline: none;
 }
