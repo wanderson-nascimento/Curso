@@ -29,7 +29,6 @@ export function Search(props:SearchProps) {
                         name="taskName"
                         value={newTask}
                         onChange={handleNewTask}
-
                     />
                     <button> Criar <img src={plus} />
                     </button>

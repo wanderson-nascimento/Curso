@@ -3,11 +3,11 @@ import { Search } from '../components/Search'
 import { TaskList } from '../components/TaskList'
 import clipboard from '../src/assets/Clipboard.png'
 import styles from './App.module.css'
-import {useState} from 'react'
+import { useState } from 'react'
 
 import './global.css'
 
-interface listaDeTarefasObj{
+interface listaDeTarefasObj {
   id: number,
   isFinished: boolean,
   text: string
@@ -27,72 +27,74 @@ function App() {
       id: 2,
       isFinished: true,
       text: 'Colocar água nas plantas',
-  
+
     },
     {
       id: 3,
       isFinished: true,
       text: 'Levar o lixo para fora',
-  
+
     }
   ])
-  
-    
-    const quantidadeCompletas:Array<listaDeTarefasObj> = 
+
+
+  const quantidadeCompletas: Array<listaDeTarefasObj> =
     listaDeTarefas.filter(
-    tarefa => (tarefa.isFinished === true)
-  )
-  
-  
+      tarefa => (tarefa.isFinished === true)
+    )
+
+
 
   const [mensagem, setMensagem] = useState('');
 
   const newListaDeTarefas = listaDeTarefas;
 
-  function modifyObject(listaDeTarefas:listaDeTarefasObj[], novaMensagem:string){
+  function onAddTask(novaMensagem: string) {
+    const textAlreadyExist = listaDeTarefas.some((task) => task.text === novaMensagem)
+    if (!textAlreadyExist) {
+      setMensagem(novaMensagem)
+      modifyObject(listaDeTarefas, novaMensagem)
+    }else{
+      alert('Já existe uma task com essa descrição')
+    }
+  }
+
+  function modifyObject(listaDeTarefas: listaDeTarefasObj[], novaMensagem: string) {
+
     newListaDeTarefas.push(
       {
         id: listaDeTarefas.length + 1,
         isFinished: false,
-        text: novaMensagem,  
+        text: novaMensagem,
       }
     )
-    console.log(mensagem, listaDeTarefas)
     setListaDeTarefas(newListaDeTarefas)
   }
 
-  function onAddTask(novaMensagem: string){
-    setMensagem(novaMensagem)
-    modifyObject(listaDeTarefas, novaMensagem)
-  }
-
-  function deleteTask(taskToDelete:string){
-    const  tasksWithoutDeletedOne = listaDeTarefas.filter(
+  function deleteTask(taskToDelete: string) {
+    const tasksWithoutDeletedOne = listaDeTarefas.filter(
       task => {
         return task.text !== taskToDelete
       }
     )
-      for(let i=0; i<tasksWithoutDeletedOne.length; i++){
-        tasksWithoutDeletedOne[i].id = i+1;
-        console.log(tasksWithoutDeletedOne)
-      }
+    for (let i = 0; i < tasksWithoutDeletedOne.length; i++) {
+      tasksWithoutDeletedOne[i].id = i + 1;
+    }
     setListaDeTarefas(tasksWithoutDeletedOne)
   }
 
-  function changeStateTask(id:number){
-    console.log('função para mudar de estado a task',id)
-    const taskListChanged = listaDeTarefas.map(task =>{
-      if(task.id === id){
+  function changeStateTask(id: number) {
+    const taskListChanged = listaDeTarefas.map(task => {
+      if (task.id === id) {
         const newCheckedState = !task.isFinished
-        
-        console.log('Novo estado é', newCheckedState)
-        return(
-          {...task, isFinished: newCheckedState}
 
-        ) 
+        return (
+          { ...task, isFinished: newCheckedState }
+
+        )
 
       }
-        return task
+      return task
     })
     setListaDeTarefas(taskListChanged)
 
@@ -102,9 +104,9 @@ function App() {
     <>
       <Header />
       <div>
-        
-        <Search addTask={onAddTask}/>
-        
+
+        <Search addTask={onAddTask} />
+
         <header className={styles.tasklistheader}>
           <div className={styles.headerelements}>
             <p className={styles.azul}>Tarefas criardas</p> <span>{listaDeTarefas.length}</span>
@@ -119,7 +121,7 @@ function App() {
               listaDeTarefas.map(tarefa => {
                 return (
                   <TaskList
-                    id={tarefa.id}
+                    key={tarefa.id}
                     isFinished={tarefa.isFinished}
                     text={tarefa.text}
                     onDeleteTask={deleteTask}
