@@ -43,8 +43,14 @@
     justify-content: space-between;
 }
 
+.textDone{
+    display: flex;
+    justify-content: space-between;
+    text-decoration-line: line-through;
+    color: var(--gray-300)
+}
+
 .element span {
-    color: var(--gray-100, #F2F2F2);
     font-family: Inter;
     font-size: 14px;
     padding: 3.273px;
@@ -74,9 +80,31 @@
 .elementkey button {
     color:var(--blue);
     outline: none;
+    padding: 3.273px;
+    border: 0px;
+    margin-right: 12px;
+    background-color:transparent
 }
 
 .elementkey button:hover {
     color:var(--blue-dark);
     outline: none;
+    background-color:transparent
 }
+
+.textDone button {
+    color:var(--purple-dark);
+    outline: none;
+    padding: 3.273px;
+    border: 0px;
+    margin-right: 12px;
+    background-color:transparent
+}
+
+.textDone button:hover {
+    color:var(--purple);
+    outline: none;
+    background-color:transparent
+}
+
+

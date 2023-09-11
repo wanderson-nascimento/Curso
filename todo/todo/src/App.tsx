@@ -10,7 +10,7 @@ import './global.css'
 interface listaDeTarefasObj{
   id: number,
   isFinished: boolean,
-  text: string,
+  text: string
 }
 
 
@@ -21,18 +21,18 @@ function App() {
     {
       id: 1,
       isFinished: false,
-      text: 'Wanderson Nascimento turpis turpis semper. Duis vel sed fames integer.',
+      text: 'Estudar React com Julio',
     },
     {
       id: 2,
       isFinished: true,
-      text: 'Nayara loiuse Floriano Nascimento libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+      text: 'Colocar água nas plantas',
   
     },
     {
       id: 3,
       isFinished: true,
-      text: 'Varios testes turpis semper. Duis vel sed fames integer.',
+      text: 'Levar o lixo para fora',
   
     }
   ])

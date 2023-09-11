@@ -1,12 +1,16 @@
-import React from "react";
 import styles from './TaskList.module.css'
-import clipboard from '../src/assets/Clipboard.png'
-import { CheckCircle, Circle, ThumbsUp, Trash } from "@phosphor-icons/react"
+import { CheckCircle, Circle, Trash } from "@phosphor-icons/react"
 
 
+interface listaDeTarefasProps{
+    id: number,
+    isFinished: boolean,
+    text: string,
+    onDeleteTask: (text:string) => void
+    onCheckTask: (id:number) => void
+  }
 
-
-export function TaskList({ id, isFinished, text, onDeleteTask, onCheckTask }) {
+export function TaskList({ id, isFinished, text, onDeleteTask, onCheckTask }:listaDeTarefasProps) {
 
     function handleDeleteTask() {
         onDeleteTask(text);
@@ -17,12 +21,13 @@ export function TaskList({ id, isFinished, text, onDeleteTask, onCheckTask }) {
         onCheckTask(id)
     }
 
+    const textStyles = isFinished ? styles.textDone:styles.elementkey
 
     return (
         <div className={styles.tasklist}>
             <main>
                 <div className={styles.element}>
-                    <label className={styles.elementkey}>
+                    <div className={textStyles}>
                         <button onClick={handleCheckTask} className={styles.checkbox}>
                             {isFinished ?  <CheckCircle size={24}/> : 
                              <Circle size={24}/>}
@@ -30,7 +35,7 @@ export function TaskList({ id, isFinished, text, onDeleteTask, onCheckTask }) {
                         <span>
                             {text}
                         </span>
-                    </label>
+                    </div>
                     <button  onClick={handleDeleteTask} title="Deletar task">
                         <Trash size={24}/>
                     </button>

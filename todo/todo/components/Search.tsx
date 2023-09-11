@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import styles from './Search.module.css'
 import plus from '../src/assets/plus.svg'
 
-export function Search(props) {
+interface SearchProps{
+    addTask: (newTask:string) => void
+  }
+
+export function Search(props:SearchProps) {
 
     const [newTask, setNewTask] = useState('')
 
-    function handleSubmitCreateNewTask(event){
+    function handleSubmitCreateNewTask(event:any){
         event.preventDefault();
         props.addTask(newTask)
     }
 
-    function handleNewTask(event){
+    function handleNewTask(event:any){
         setNewTask(event.target.value)
     }
 
