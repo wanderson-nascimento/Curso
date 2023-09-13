@@ -3,21 +3,20 @@ import { CheckCircle, Circle, Trash } from "@phosphor-icons/react"
 
 
 interface listaDeTarefasProps{
-    key: number,
+    id: number,
     isFinished: boolean,
     text: string,
     onDeleteTask: (text:string) => void
     onCheckTask: (id:number) => void
   }
 
-export function TaskList({ key, isFinished, text, onDeleteTask, onCheckTask }:listaDeTarefasProps) {
-    console.log('Renderizar os elementos da lista')
+export function TaskList({ id, isFinished, text, onDeleteTask, onCheckTask }:listaDeTarefasProps) {
     function handleDeleteTask() {
         onDeleteTask(text);
     }
 
     function handleCheckTask(){
-        onCheckTask(key)
+        onCheckTask(id)
     }
 
     const textStyles = isFinished ? styles.textDone:styles.elementkey

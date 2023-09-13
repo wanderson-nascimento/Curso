@@ -54,7 +54,7 @@ function App() {
     if (!textAlreadyExist) {
       setMensagem(novaMensagem)
       modifyObject(listaDeTarefas, novaMensagem)
-    }else{
+    } else {
       alert('Já existe uma task com essa descrição')
     }
   }
@@ -69,6 +69,7 @@ function App() {
       }
     )
     setListaDeTarefas(newListaDeTarefas)
+    orderTaskAccordinToFinishedStatus(newListaDeTarefas);
   }
 
   function deleteTask(taskToDelete: string) {
@@ -96,8 +97,17 @@ function App() {
       }
       return task
     })
-    setListaDeTarefas(taskListChanged)
 
+    setListaDeTarefas(taskListChanged)
+    orderTaskAccordinToFinishedStatus(taskListChanged);
+
+  }
+
+  function orderTaskAccordinToFinishedStatus(taskListToBeSorted:listaDeTarefasObj[]) {
+    const orderedTaskList = taskListToBeSorted.slice();
+    orderedTaskList.sort((a, b) => (a.isFinished === b.isFinished ? 0 : a.isFinished ? 1 : -1))
+    setListaDeTarefas(orderedTaskList)
+    console.log('A lista foi ordenada')
   }
 
   return (
@@ -121,7 +131,7 @@ function App() {
               listaDeTarefas.map(tarefa => {
                 return (
                   <TaskList
-                    key={tarefa.id}
+                    id={tarefa.id}
                     isFinished={tarefa.isFinished}
                     text={tarefa.text}
                     onDeleteTask={deleteTask}
