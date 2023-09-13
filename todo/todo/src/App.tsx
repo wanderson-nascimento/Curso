@@ -122,7 +122,9 @@ function App() {
             <p className={styles.azul}>Tarefas criardas</p> <span>{listaDeTarefas.length}</span>
           </div>
           <div className={styles.headerelements}>
-            <p className={styles.roxo}>Concluídas</p> <span>{quantidadeCompletas.length} de {listaDeTarefas.length}</span>
+            <p className={styles.roxo}>Concluídas</p> {
+              listaDeTarefas.length == 0 ? <span>{listaDeTarefas.length}</span> : <span>{quantidadeCompletas.length} de {listaDeTarefas.length}</span> 
+            }
           </div>
         </header>
         {listaDeTarefas.length > 0 ?

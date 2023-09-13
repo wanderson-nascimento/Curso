@@ -34,6 +34,7 @@
 .search input:focus{
     border: 1px solid var(--purple-dark); /* Define uma borda de foco personalizada em azul quando o input está em foco */
     outline: none;
+    color: var(--gray-100)
 
 }
 
@@ -43,8 +44,8 @@
     color: var(--gray-100);
     width: 90px;
     height: 52px;
-    font-weight: bold;
     font-size: 0.875;
+    font-weight: 700;
     gap: 0.5rem;
     display: flex;
     justify-content: center;
