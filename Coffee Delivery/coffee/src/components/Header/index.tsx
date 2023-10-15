@@ -5,6 +5,7 @@ import { ShoppingCart, MapPinLine } from '@phosphor-icons/react'
 import logoCoffee from '../../assets/logoCafe.svg'
 
 import { NavLink } from 'react-router-dom'
+import { CartButton, LocationButton } from '../Button'
 
 export function Header() {
     return (
@@ -14,10 +15,10 @@ export function Header() {
             </span>
             <nav>
                 <NavLink to="/" title="Home">
-                    <MapPinLine size={24} /> Porto Alegre, RS
+                    <LocationButton />
                 </NavLink>
                 <NavLink to="/checkout" title="Checkout">
-                    <ShoppingCart size={24} />
+                    <CartButton/>
                 </NavLink>
             </nav>
         </HeaderContainer>

@@ -11,8 +11,24 @@ flex-shrink: 0;
 border-radius: 6px;
 border:none;
 
-background: ${props => props.$secondary ? props.theme['base-button'] : props.theme['base-text']};
+background-color: ${props => props.$secondary ? props.theme['base-button'] : props.theme['base-text']};
 color: ${props => props.$secondary ? props.theme['base-text'] : props.theme['base-text']};
+
+`
+
+export const PrimaryButton = styled.button<{ $primary?: boolean; }>`
+display: inline-flex;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+
+border-radius: 6px;
+padding: 12px 8px;
+gap: 4px;
+border:none;
+
+background-color: ${props => props.$primary ? props.theme['yellow'] : props.theme['white']};
+color: ${props => props.$primary ? props.theme['yellow-dark'] : props.theme['white']};
 
 `
 
@@ -25,6 +41,8 @@ justify-content: center;
 align-items: center;
 gap: 4px;
 margin-right:8px;
+font-size: 12px;
+
 
 color: ${props => props.theme['purple']};
 
@@ -68,5 +86,60 @@ background: ${props => props.theme['purple-dark']};
 &:hover{
   background: ${props => props.theme['purple']};
 }
+`
+export const LocationButtonContainer = styled(SecondaryButton)`
 
+padding: 8px;
+justify-content: center;
+align-items: center;
+gap: 4px;
+border-radius: 6px;
+border:none;
+height: 38px;
+
+color: ${props => props.theme['purple-dark']};
+background-color: ${props => props.theme['purple-light']};
+
+&:hover{
+  background-color: ${props => props.theme['white']};
+}
+`
+
+export const CartButtonContainer = styled(PrimaryButton)`
+padding: 8px;
+margin-left:12px;
+
+background-color: ${props => props.theme['yellow-light']};
+
+&:hover{
+  background-color: ${props => props.theme['white']};
+}
+`
+
+export const RemoveButtonStyle = styled(IncrementButtonStyle)`
+ color: ${props => props.theme['base-text']};
+ width:91px;
+ font-weight: 400;
+
+ svg{
+  color: ${props => props.theme['purple']};
+ }
+`
+
+export const PlaceOrderButtonContainer = styled.div`
+display: flex;
+padding: 12px 8px;
+justify-content: center;
+align-items: center;
+gap: 4px;
+text-transform: uppercase;
+font-size: 14px;
+font-weight: 700;
+
+
+
+border-radius: 6px;
+
+  color: ${props => props.theme['white']};
+  background: ${props => props.theme['yellow']};
 `

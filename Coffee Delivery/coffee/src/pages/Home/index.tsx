@@ -1,7 +1,8 @@
-import { HomeContainer, CoffeeList, TextHeader } from "./styles";
+import { HomeContainer, TextHeader, CoffeeList } from "./styles";
 import coffeeHomeHeader from '../../assets/CoffeeHomeHeader.svg'
 import { Timer } from '@phosphor-icons/react'
 import { CoffeeCard } from '../../components/CoffeeCard'
+import catalogList from '../../assets/catalogList.json'
 
 export function Home() {
     return (
@@ -15,31 +16,39 @@ export function Home() {
                         <span>
                             Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora
                         </span>
+                        <CoffeeList>
+                            <section>
+                                <Timer size={32} />
+                                <p>Compra simples e segura</p>
+                            </section>
+                            <section>
+                                <Timer size={32} />
+                                <p>Entrega rápida e rastreada</p>
+                            </section>
+                            <section>
+                                <Timer size={32}/>
+                                <p>Embalagem mantém o café intacto</p>
+                            </section>
+                            <section>
+                                <Timer size={32}/>
+                                <p>O café chega fresquinho até você</p>
+                            </section>
+                        </CoffeeList>
                     </TextHeader>
                     <img src={coffeeHomeHeader} width={476} height={360} ></img>
                 </div>
-                <CoffeeList>
-                    <div>
-                        <Timer />
-                        <span>Compra simples e segura</span>
-                    </div>
-                    <div>
-                        <Timer />
-                        <span>Entrega rápida e rastreada</span>
-                    </div>
-                    <div>
-                        <Timer />
-                        <span>Embalagem mantém o café intacto</span>
-                    </div>
-                    <div>
-                        <Timer />
-                        <span>O café chega fresquinho até você</span>
-                    </div>
-                </CoffeeList>
             </header>
+            <h2>Nosso cafés</h2>
             <main>
-                Nosso cafés 
-                <CoffeeCard/>
+                {catalogList.map(item => {
+                    return(
+                        <CoffeeCard
+                            key={item.id}
+                            item={item} 
+                        />
+                    )
+                })}
+
             </main>
         </HomeContainer>
     )
