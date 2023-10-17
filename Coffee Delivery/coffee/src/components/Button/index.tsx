@@ -14,7 +14,7 @@ export function IncrementButton() {
 export function IconButton() {
     return (
         <IconButtonContainer>
-            <ShoppingCartSimple size={22}/>
+            <ShoppingCartSimple size={22} />
         </IconButtonContainer>
     )
 }
@@ -22,7 +22,7 @@ export function IconButton() {
 export function LocationButton(){
     return(
         <LocationButtonContainer>
-            <MapPin  size={22} /> Porto Alegre, RS
+            <MapPin  size={22} weight="fill"/> Porto Alegre, RS
         </LocationButtonContainer>
     )
 }
@@ -30,7 +30,7 @@ export function LocationButton(){
 export function CartButton(){
     return(
         <CartButtonContainer $primary>
-            <ShoppingCartSimple size={22} />
+            <ShoppingCartSimple size={22} weight="fill"/>
         </CartButtonContainer>
     )
 }

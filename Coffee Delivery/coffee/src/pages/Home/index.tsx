@@ -1,6 +1,6 @@
 import { HomeContainer, TextHeader, CoffeeList } from "./styles";
 import coffeeHomeHeader from '../../assets/CoffeeHomeHeader.svg'
-import { Timer } from '@phosphor-icons/react'
+import { Timer, ShoppingCart, Package, Coffee } from '@phosphor-icons/react'
 import { CoffeeCard } from '../../components/CoffeeCard'
 import catalogList from '../../assets/catalogList.json'
 
@@ -18,19 +18,19 @@ export function Home() {
                         </span>
                         <CoffeeList>
                             <section>
-                                <Timer size={32} />
+                                <ShoppingCart  size={32} weight="fill" />
                                 <p>Compra simples e segura</p>
                             </section>
                             <section>
-                                <Timer size={32} />
-                                <p>Entrega rápida e rastreada</p>
-                            </section>
-                            <section>
-                                <Timer size={32}/>
+                                <Package size={32} weight="fill"/>
                                 <p>Embalagem mantém o café intacto</p>
                             </section>
                             <section>
-                                <Timer size={32}/>
+                                <Timer  size={32} weight="fill"/>
+                                <p>Entrega rápida e rastreada</p>
+                            </section>
+                            <section>
+                                <Coffee weight="fill" size={32}/>
                                 <p>O café chega fresquinho até você</p>
                             </section>
                         </CoffeeList>

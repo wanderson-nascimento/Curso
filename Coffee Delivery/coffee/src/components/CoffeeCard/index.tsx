@@ -35,21 +35,24 @@ export function CoffeeCard({ item }: ItemsDataProps) {
 
 export function CoffeeCardCheckout() {
     return (
-        <CoffeeCardCheckoutContainer>
-            <img src={expressoTradicional} ></img>
-            <main>
-                <h3>Expresso Tradicional</h3>
-                <div>
-                    <IncrementChekoutButton />
-                    <RemoveButton />
-                </div>
-            </main>
-            <CoffeeCardCheckoutFooter>
-                <div>
-                    <p>R$ </p>
-                    <p>9,90</p>
-                </div>
-            </CoffeeCardCheckoutFooter>
-        </CoffeeCardCheckoutContainer>
+        <><hr color="red" />
+            <CoffeeCardCheckoutContainer>
+                <img src={expressoTradicional} ></img>
+                <main>
+                    <h3>Expresso Tradicional</h3>
+                    <div>
+                        <IncrementChekoutButton />
+                        <RemoveButton />
+                    </div>
+                </main>
+                <CoffeeCardCheckoutFooter>
+                    <div>
+                        <p>R$ </p>
+                        <p>9,90</p>
+                    </div>
+                </CoffeeCardCheckoutFooter>
+
+            </CoffeeCardCheckoutContainer>
+        </>
     )
 }

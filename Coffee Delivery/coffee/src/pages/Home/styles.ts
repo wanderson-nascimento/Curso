@@ -28,7 +28,10 @@ main{
 
 }
 header{
-margin-bottom:92px;
+background-image: url("src/assets/BackgroundHome.svg");
+background-size: cover;
+width: 100%;
+height: 544px;
 
 img{
     margin-left:56px
@@ -67,35 +70,35 @@ span{
 
 export const CoffeeList = styled.div`
 
-display:flex;
-gap: 12px;
-align-items: center;
-width: 567px;
+/* display:flex; */
+flex-wrap:wrap; 
+flex-shrink: 0;
+
+
+width: 600px;
 height: 84px;
 margin-top:66px;
+font-size: 16px;
+line-height: 130%;
 color: ${(props) => props.theme['base-text']};
-
-
-
 
 section{
     display:flex;
     gap: 12px;
+    align-items: center;
+    width: 300px;
+    margin-bottom:20px;
+    /* white-space: nowrap; */
 }
 
 svg{ 
     color: ${(props) => props.theme['white']};
-    background: ${(props) => props.theme['base-subtitle']};  
+    background: ${(props) => props.theme['yellow-dark']};  
     border-radius: 1000px;
     padding: 8px;
 }
 
-// p{
-//     /* Text/Regular M */
-// font-family: 'Roboto';
-// font-size: 16px;
-// font-style: normal;
-// font-weight: 400;
-// line-height: 130%; /* 20.8px */
-// }
+p{
+    flex: 1 0 0;
+}
 `

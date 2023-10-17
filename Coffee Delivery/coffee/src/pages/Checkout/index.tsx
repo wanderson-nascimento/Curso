@@ -9,7 +9,7 @@ export function Checkout() {
             <CheckoutFormContainer>
                 <h2>Complete seu pedido</h2>
                 <HeaderForm>
-                    <MapPinLine size={22} />
+                    <MapPinLine size={22}  />
                     <div><h3>Endereço de Entrega</h3>
                         <p>Informe o endereço onde deseja receber seu pedido</p>
                     </div>
@@ -29,7 +29,6 @@ export function Checkout() {
                 <CoffeeCardCheckout />
                 <CoffeeCardCheckout />
                 <Totalizers>
-                    <hr/>
                     <section>
                         <span>Total de itens</span>
                         <p>R$ 29,70</p>

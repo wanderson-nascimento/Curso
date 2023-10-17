@@ -1,10 +1,11 @@
 import { createContext, useState, ReactNode } from "react"
+import { addCoffee } from "../reducers/actions"
 
-interface ItemsDataType {
+export interface ItemsDataType {
     id: number | null
     name: string | null
     img: string | undefined
-    label: string[]
+    label: string[] | undefined
     description: string | null
     price: string | null
 }
@@ -25,10 +26,11 @@ interface ProfileDataType {
 
 
 
-interface OrderFormContextType {
+export interface OrderFormContextType {
     profileData: ProfileDataType[] | null;
     paymentData: string | null;
-    itemsData: ItemsDataType[] | null;
+    itemsData: ItemsDataType[];
+    createNewCycle: (data: ItemsDataType) => void;
 }
 
 export const OrderFormContext = createContext({} as OrderFormContextType)
@@ -38,10 +40,21 @@ interface OrderFormContextProviderProps{
 }
 
 
+
+
 export function OrderFormContextProvider({ children }:OrderFormContextProviderProps) {
     const [itemsData, setItemsData] = useState<ItemsDataType[]>([])
     const [profileData, setProfileData] = useState<ProfileDataType[]>([])
     const [paymentData, setPaymentData] = useState(null)
+
+    function addNewCoffeeType(data: ItemsDataType){
+
+        const newCoffee: Coffee = {
+
+        }
+
+        dispatch(addCoffee(newCoffee))
+    }
 
     return (
         <OrderFormContext.Provider

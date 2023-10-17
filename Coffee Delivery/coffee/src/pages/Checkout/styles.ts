@@ -97,7 +97,6 @@ width: 60px;
 export const CheckoutPaymentContainer = styled(CheckoutBaseDiv)`
 margin-top:12px;
 width:560px;
-height:127px;
 gap: 32px;
 `
 
@@ -131,6 +130,7 @@ export const PaymentsCardList = styled.div`
     justify-content: center;
     align-items: center;
     gap: 12px;
+
 
     svg{
     color:${(props) => props.theme['purple']};

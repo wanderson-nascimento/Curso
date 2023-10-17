@@ -1,5 +1,5 @@
 
-import { CurrencyDollar } from '@phosphor-icons/react'
+import { CurrencyDollar, Timer, MapPin } from '@phosphor-icons/react'
 import Illustration from '../../assets/Illustration.svg'
 import { PlaceOrderContainer } from './styles'
 
@@ -13,14 +13,14 @@ export function PlaceOrder() {
             <main>
                 <article>
                     <div>
-                        <CurrencyDollar size={32} />
+                        <MapPin size={32} weight="fill"/>
                         <section>
                             <p>Entrega em <strong>Rua João Daniel Martinelli,</strong> </p>
                             <p> 102Farrapos - Porto Alegre, RS</p>
                         </section>
                     </div>
                     <div>
-                        <CurrencyDollar size={32} />
+                        <Timer size={32} weight="fill"/>
                         <section>
                             <p>Previsão de entrega </p>
                             <strong>20 min - 30 min </strong>
