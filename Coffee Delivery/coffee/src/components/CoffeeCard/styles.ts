@@ -36,7 +36,7 @@ align-items: center;
 
     span{
       /* Text/Regular S */
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -45,6 +45,10 @@ align-items: center;
     color:${(props) => props.theme['base-label']};
     width:216px;
     height:36px;
+    }
+
+    button{
+        border:none;
     }
 
 `

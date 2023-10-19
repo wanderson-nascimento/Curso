@@ -6,6 +6,11 @@ import { ItemsDataProps } from '../../contexts/OrderFormContext'
 
 export function CoffeeCard({ item }: ItemsDataProps) {
 
+    function handleAddCoffe() {
+        console.log(JSON.stringify(item))
+        
+    }
+
     return (
         <CoffeeCardContainer>
             <img src={item.img}></img>
@@ -26,7 +31,9 @@ export function CoffeeCard({ item }: ItemsDataProps) {
                 </div>
                 <div>
                     <IncrementButton />
-                    <IconButton />
+                    <button onClick={handleAddCoffe}>
+                        <IconButton />
+                    </button>
                 </div>
             </CoffeeCardFooter>
         </CoffeeCardContainer>

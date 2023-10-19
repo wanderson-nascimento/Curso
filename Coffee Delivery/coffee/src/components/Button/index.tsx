@@ -14,7 +14,7 @@ export function IncrementButton() {
 export function IconButton() {
     return (
         <IconButtonContainer>
-            <ShoppingCartSimple size={22} />
+            <ShoppingCartSimple size={22} weight="fill" />
         </IconButtonContainer>
     )
 }
