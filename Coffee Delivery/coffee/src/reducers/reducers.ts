@@ -8,7 +8,7 @@ export function orderFormReducer(state: OrderFormContextType, action:any){
     switch(action.type){
         case ActionTypes.ADD_COFFEE:
             return produce(state, (draft) => {
-                draft.itemsData.push(action.payload.coffeeItem)
+                draft.itemData.push(action.payload.coffeeItem)
             })
         default:
             return state                        

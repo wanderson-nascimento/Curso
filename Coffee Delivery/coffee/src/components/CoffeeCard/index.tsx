@@ -1,23 +1,25 @@
 import { CoffeeCardContainer, CoffeeCardCheckoutFooter, CoffeeTypes, CoffeeCardFooter, CoffeeCardCheckoutContainer } from "./styles"
 import expressoTradicional from '../../assets/coffeeImages/expressoTradicional.svg'
 import { IncrementButton, IconButton, IncrementChekoutButton, RemoveButton, } from "../Button/index"
-import { ItemsDataProps } from '../../contexts/OrderFormContext'
+import { ItemsDataProps, ItemsDataType, OrderFormContext } from '../../contexts/OrderFormContext'
+import { useContext } from "react"
 
 
 export function CoffeeCard({ item }: ItemsDataProps) {
 
-    function handleAddCoffe() {
-        console.log(JSON.stringify(item))
-        
+    const { addNewCoffeeType } = useContext(OrderFormContext)
+
+    function handleAddCoffe(item: ItemsDataType) {
+        addNewCoffeeType(item)
     }
 
     return (
         <CoffeeCardContainer>
             <img src={item.img}></img>
             <div>
-                {item.label.map((label, index) => (
+                {item.label.map((label) => (
                     <CoffeeTypes>
-                        <p key={index}>{label}</p>
+                        <p key={item.id}>{label}</p>
                     </CoffeeTypes>
                 ))
                 }
@@ -31,7 +33,7 @@ export function CoffeeCard({ item }: ItemsDataProps) {
                 </div>
                 <div>
                     <IncrementButton />
-                    <button onClick={handleAddCoffe}>
+                    <button onClick={() => handleAddCoffe(item)}>
                         <IconButton />
                     </button>
                 </div>

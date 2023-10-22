@@ -4,7 +4,7 @@ import { Timer, ShoppingCart, Package, Coffee } from '@phosphor-icons/react'
 import { CoffeeCard } from '../../components/CoffeeCard'
 import catalogList from '../../assets/catalogList.json'
 
-export function Home() {
+export function Home() {    
     return (
         <HomeContainer>
             <header>

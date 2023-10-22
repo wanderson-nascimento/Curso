@@ -30,7 +30,8 @@ interface ProfileDataType {
 export interface OrderFormContextType {
     profileData: ProfileDataType[] | null;
     paymentData: string | null;
-    itemsData: ItemsDataType[];
+    itemData: ItemsDataType[];
+    addNewCoffeeType: (data: ItemsDataType) => void
     // createNewCycle: (data: ItemsDataType) => void;
 }
 
@@ -44,30 +45,39 @@ interface OrderFormContextProviderProps{
 
 
 export function OrderFormContextProvider({ children }:OrderFormContextProviderProps) {
-    const [itemsData, setItemsData] = useState<ItemsDataType[]>([])
+    // const [itemsData, setItemsData] = useState<ItemsDataType[]>([])
     const [profileData, setProfileData] = useState<ProfileDataType[]>([])
     const [paymentData, setPaymentData] = useState(null)
 
-    // const [itemsDataState, dispatch] = useReducer(orderFormReducer,
-    //     {
+    const [orderFormState, dispatch] = useReducer(orderFormReducer, {
+        profileData: [],
+        paymentData: null,    
+        itemData: [],
+        addNewCoffeeType
+    })
 
-    //     })
+    const {itemData} = orderFormState
 
-    // function addNewCoffeeType(data: ItemsDataType){
 
-    //     const newCoffee: Coffee = {
-
-    //     }
-
-    //     dispatch(addCoffee(newCoffee))
-    // }
+    function addNewCoffeeType(data: ItemsDataType){
+        const newCoffeeToAdd:ItemsDataType = {
+                id: data.id,
+                name: data.name,
+                img: data.img,
+                label: data.label,
+                description: data.description,
+                price: data.price,
+              }
+              dispatch(addCoffee(newCoffeeToAdd))
+            }
 
     return (
         <OrderFormContext.Provider
         value={{
             profileData,
             paymentData,
-            itemsData,
+            itemData,
+            addNewCoffeeType,
             // createNewCycle
           }}
         >
