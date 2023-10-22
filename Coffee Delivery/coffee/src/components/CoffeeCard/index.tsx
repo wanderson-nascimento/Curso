@@ -13,6 +13,8 @@ export function CoffeeCard({ item }: ItemsDataProps) {
         addNewCoffeeType(item)
     }
 
+    
+
     return (
         <CoffeeCardContainer>
             <img src={item.img}></img>

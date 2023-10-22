@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode, useReducer } from "react"
+import { createContext, useState, ReactNode, useReducer, useEffect } from "react"
 import { addCoffee } from "../reducers/actions"
 import {orderFormReducer} from "../reducers/reducers"
 
@@ -44,6 +44,7 @@ interface OrderFormContextProviderProps{
 
 
 
+
 export function OrderFormContextProvider({ children }:OrderFormContextProviderProps) {
     // const [itemsData, setItemsData] = useState<ItemsDataType[]>([])
     const [profileData, setProfileData] = useState<ProfileDataType[]>([])
@@ -54,7 +55,23 @@ export function OrderFormContextProvider({ children }:OrderFormContextProviderPr
         paymentData: null,    
         itemData: [],
         addNewCoffeeType
-    })
+    },
+    (initialState) => {
+        const storedStateAsJSON = localStorage.getItem(
+          '@ignite-timer:orderFormes-state-1.0.0',
+        )
+  
+        if (storedStateAsJSON) {
+          return JSON.parse(storedStateAsJSON)
+        }
+  
+        return initialState
+      },
+    )
+
+    useEffect(() => {
+        console.log(orderFormState)
+    },[orderFormState])
 
     const {itemData} = orderFormState
 
