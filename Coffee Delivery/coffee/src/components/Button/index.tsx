@@ -16,7 +16,7 @@ export function IncrementButton() {
     }
 
     return (
-        <IncrementButtonStyle $secondary>
+        <IncrementButtonStyle>
             <button onClick={handleMinus}><Minus size={14} /></button>
             <span>{coffeeQuantiy}</span>
             <button onClick={handlePlus}><Plus size={14} /></button>
@@ -50,7 +50,7 @@ export function CartButton() {
 
 export function IncrementChekoutButton() {
     return (
-        <IncrementButtonStyle $secondary>
+        <IncrementButtonStyle>
             <button><Minus size={14} /></button>
             <span>1</span>
             <button><Plus size={14} /></button>
@@ -60,7 +60,7 @@ export function IncrementChekoutButton() {
 
 export function RemoveButton() {
     return (
-        <RemoveButtonStyle $secondary>
+        <RemoveButtonStyle>
             <Trash size={16} />
             <p>REMOVER</p>
         </RemoveButtonStyle>

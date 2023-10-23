@@ -32,7 +32,7 @@ color: ${props => props.$primary ? props.theme['yellow-dark'] : props.theme['whi
 
 `
 
-export const IncrementButtonStyle = styled(SecondaryButton)`
+export const IncrementButtonStyle = styled.div`
 display: flex;
 width:72px;
 height: 38px;
@@ -42,9 +42,10 @@ align-items: center;
 gap: 4px;
 margin-right:8px;
 font-size: 12px;
-
-
+border-radius: 6px;
+background: ${props => props.theme['base-button']};
 color: ${props => props.theme['purple']};
+
 
 span{
 font-size: 16px;
@@ -60,6 +61,7 @@ color: ${props => props.theme['base-title']};
 button{
   color: ${props => props.theme['purple']};
   background: ${props => props.theme['base-button']};
+  
   border:none;
 
   &:hover{
@@ -70,7 +72,7 @@ button{
 
 `
 
-export const IconButtonContainer = styled.button`
+export const IconButtonContainer = styled.div`
 
 display: inline-flex;
 padding: 8px;
