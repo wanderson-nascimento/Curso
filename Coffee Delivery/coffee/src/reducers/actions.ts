@@ -26,11 +26,11 @@ export function updateCoffeeAction(coffeeItem:number, quantity:number){
     }
 }
 
-export function removeCoffeeAction(coffeeItem:number){
+export function removeCoffeeAction(coffeeItemId:number){
     return{
         type: ActionTypes.REMOVE_COFFEE,
         payload:{
-            coffeeItem
+            coffeeItemId
         }
     }
 }

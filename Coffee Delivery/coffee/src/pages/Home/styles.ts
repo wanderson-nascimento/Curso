@@ -29,7 +29,6 @@ main{
 }
 header{
 background-image: url("src/assets/BackgroundHome.svg");
-background-size: cover;
 width: 100%;
 height: 544px;
 

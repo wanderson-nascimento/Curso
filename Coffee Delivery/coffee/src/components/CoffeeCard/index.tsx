@@ -7,7 +7,7 @@ import { useContext, useState } from "react"
 
 export function CoffeeCard({ item }: ItemsDataProps) {
     const [coffeeQuantiy, setCoffeeQuantity] = useState(1)
-    const { addNewCoffeeType, itemData, updateCoffeQuantity, removeCoffee  } = useContext(OrderFormContext)
+    const { addNewCoffee, itemData, updateCoffeQuantity, removeCoffee  } = useContext(OrderFormContext)
 
     function handlePlus() {
         setCoffeeQuantity(prevCoffeeQuantity => prevCoffeeQuantity + 1)
@@ -22,7 +22,7 @@ export function CoffeeCard({ item }: ItemsDataProps) {
     function handleAddOrUpdateCoffe(item: ItemsDataType, coffeeQuantiy: number) {
         const itemToUpdate = itemData.findIndex(element => element.id === item.id)
         if (itemToUpdate < 0) {
-            addNewCoffeeType(item, coffeeQuantiy)
+            addNewCoffee(item, coffeeQuantiy)
         } else if (coffeeQuantiy == 0) {
             removeCoffee(itemToUpdate)
         }

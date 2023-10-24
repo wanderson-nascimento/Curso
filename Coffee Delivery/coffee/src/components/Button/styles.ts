@@ -54,7 +54,6 @@ margin-right:4px;
 display: flex;
 justify-content: center; 
 align-items: center;
-
 color: ${props => props.theme['base-title']};
 }
 

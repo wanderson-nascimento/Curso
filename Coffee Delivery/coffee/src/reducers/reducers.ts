@@ -22,7 +22,7 @@ export function orderFormReducer(state: OrderFormContextType, action: any) {
 
         case ActionTypes.REMOVE_COFFEE:
             return produce(state, (draft) => {
-                draft.itemData.splice(action.payload.coffeeItem, 1)
+                draft.itemData.splice(action.payload.coffeeItemId, 1)
             })
 
         default:

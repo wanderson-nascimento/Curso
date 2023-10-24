@@ -32,7 +32,7 @@ export interface OrderFormContextType {
     profileData: ProfileDataType[] | null;
     paymentData: string | null;
     itemData: ItemsDataType[];
-    addNewCoffeeType: (data: ItemsDataType, quantity: number) => void;
+    addNewCoffee: (data: ItemsDataType, quantity: number) => void;
     updateCoffeQuantity: (data: number, quantity: number) => void;
     removeCoffee: (data: number) => void;
 }
@@ -55,7 +55,7 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         profileData: [],
         paymentData: null,
         itemData: [],
-        addNewCoffeeType,
+        addNewCoffee,
         updateCoffeQuantity,
         removeCoffee
     },
@@ -79,7 +79,7 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
     const { itemData } = orderFormState
 
 
-    function addNewCoffeeType(data: ItemsDataType, quantity: number) {
+    function addNewCoffee(data: ItemsDataType, quantity: number) {
         const newCoffeeToAdd: ItemsDataType = {
             id: data.id,
             name: data.name,
@@ -105,7 +105,7 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
                 profileData,
                 paymentData,
                 itemData,
-                addNewCoffeeType,
+                addNewCoffee,
                 updateCoffeQuantity,
                 removeCoffee
             }}
