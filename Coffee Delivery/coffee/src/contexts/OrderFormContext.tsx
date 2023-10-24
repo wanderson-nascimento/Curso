@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode, useReducer, useEffect } from "react"
-import { addCoffeeAction, updateCoffeeAction } from "../reducers/actions"
+import { addCoffeeAction, updateCoffeeAction, removeCoffeeAction } from "../reducers/actions"
 import { orderFormReducer } from "../reducers/reducers"
 
 export interface ItemsDataType {
@@ -34,6 +34,7 @@ export interface OrderFormContextType {
     itemData: ItemsDataType[];
     addNewCoffeeType: (data: ItemsDataType, quantity: number) => void;
     updateCoffeQuantity: (data: number, quantity: number) => void;
+    removeCoffee: (data: number) => void;
 }
 
 export const OrderFormContext = createContext({} as OrderFormContextType)
@@ -55,7 +56,8 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         paymentData: null,
         itemData: [],
         addNewCoffeeType,
-        updateCoffeQuantity
+        updateCoffeQuantity,
+        removeCoffee
     },
         (initialState) => {
             const storedStateAsJSON = localStorage.getItem(
@@ -93,6 +95,11 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         dispatch(updateCoffeeAction(itemToUpdate, quantity))
     }
 
+    function removeCoffee(itemToUpdate: number) {
+        console.log('função dentro do context')
+        dispatch(removeCoffeeAction(itemToUpdate))
+    }
+
     return (
         <OrderFormContext.Provider
             value={{
@@ -101,6 +108,7 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
                 itemData,
                 addNewCoffeeType,
                 updateCoffeQuantity,
+                removeCoffee
             }}
         >
             {children}

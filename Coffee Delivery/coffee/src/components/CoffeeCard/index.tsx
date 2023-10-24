@@ -3,12 +3,11 @@ import expressoTradicional from '../../assets/coffeeImages/expressoTradicional.s
 import { IncrementButton, IconButton, IncrementChekoutButton, RemoveButton, } from "../Button/index"
 import { ItemsDataProps, ItemsDataType, OrderFormContext } from '../../contexts/OrderFormContext'
 import { useContext, useState } from "react"
-import { removeCoffeeAction } from "../../reducers/actions"
 
 
 export function CoffeeCard({ item }: ItemsDataProps) {
     const [coffeeQuantiy, setCoffeeQuantity] = useState(1)
-    const { addNewCoffeeType, itemData, updateCoffeQuantity } = useContext(OrderFormContext)
+    const { addNewCoffeeType, itemData, updateCoffeQuantity, removeCoffee  } = useContext(OrderFormContext)
 
     function handlePlus() {
         setCoffeeQuantity(prevCoffeeQuantity => prevCoffeeQuantity + 1)
@@ -25,7 +24,8 @@ export function CoffeeCard({ item }: ItemsDataProps) {
         if (itemToUpdate < 0) {
             addNewCoffeeType(item, coffeeQuantiy)
         } else if (coffeeQuantiy == 0) {
-            removeCoffeeAction(itemToUpdate)
+            console.log('função se a quantidade for igual a 0')
+            removeCoffee(itemToUpdate)
         }
         else {
             updateCoffeQuantity(itemToUpdate, coffeeQuantiy)

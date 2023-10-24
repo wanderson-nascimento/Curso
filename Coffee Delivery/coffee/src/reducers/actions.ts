@@ -3,7 +3,6 @@ import { ItemsDataType } from '../contexts/OrderFormContext'
 export enum ActionTypes{
     ADD_COFFEE = 'ADD_COFFEE',
     UPDATE_COFFEE = 'UPDATE_COFFEE',
-    DECREMENT_COFFEE = 'DECREMENT_COFFEE',
     REMOVE_COFFEE = 'REMOVE_COFFEE', 
 }
 
@@ -28,8 +27,9 @@ export function updateCoffeeAction(coffeeItem:number, quantity:number){
 }
 
 export function removeCoffeeAction(coffeeItem:number){
+    console.log('função do action de remover')
     return{
-        type: ActionTypes.UPDATE_COFFEE,
+        type: ActionTypes.REMOVE_COFFEE,
         payload:{
             coffeeItem
         }
