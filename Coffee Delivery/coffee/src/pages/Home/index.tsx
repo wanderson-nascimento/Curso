@@ -38,7 +38,7 @@ export function Home() {
                     <img src={coffeeHomeHeader} width={476} height={360} ></img>
                 </div>
             </header>
-            <h2>Nosso cafés</h2>
+            <h2>Nossos cafés</h2>
             <main>
                 {catalogList.map(item => {
                     return(

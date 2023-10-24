@@ -2,18 +2,38 @@ import { CoffeeCardContainer, CoffeeCardCheckoutFooter, CoffeeTypes, CoffeeCardF
 import expressoTradicional from '../../assets/coffeeImages/expressoTradicional.svg'
 import { IncrementButton, IconButton, IncrementChekoutButton, RemoveButton, } from "../Button/index"
 import { ItemsDataProps, ItemsDataType, OrderFormContext } from '../../contexts/OrderFormContext'
-import { useContext } from "react"
+import { useContext, useState } from "react"
+import { removeCoffeeAction } from "../../reducers/actions"
 
 
 export function CoffeeCard({ item }: ItemsDataProps) {
+    const [coffeeQuantiy, setCoffeeQuantity] = useState(1)
+    const { addNewCoffeeType, itemData, updateCoffeQuantity } = useContext(OrderFormContext)
 
-    const { addNewCoffeeType } = useContext(OrderFormContext)
-
-    function handleAddCoffe(item: ItemsDataType) {
-        addNewCoffeeType(item)
+    function handlePlus() {
+        setCoffeeQuantity(prevCoffeeQuantity => prevCoffeeQuantity + 1)
     }
 
-    
+    function handleMinus() {
+        if (coffeeQuantiy > 0) {
+            setCoffeeQuantity(prevCoffeeQuantity => prevCoffeeQuantity - 1)
+        }
+    }
+
+    function handleAddOrUpdateCoffe(item: ItemsDataType, coffeeQuantiy: number) {
+        const itemToUpdate = itemData.findIndex(element => element.id === item.id)
+        if (itemToUpdate < 0) {
+            addNewCoffeeType(item, coffeeQuantiy)
+        } else if (coffeeQuantiy == 0) {
+            removeCoffeeAction(itemToUpdate)
+        }
+        else {
+            updateCoffeQuantity(itemToUpdate, coffeeQuantiy)
+        }
+
+    }
+
+
 
     return (
         <CoffeeCardContainer>
@@ -34,8 +54,8 @@ export function CoffeeCard({ item }: ItemsDataProps) {
                     <p>{item.price}</p>
                 </div>
                 <div>
-                    <IncrementButton />
-                    <button onClick={() => handleAddCoffe(item)}>
+                    <IncrementButton coffeeQuantity={coffeeQuantiy} handleMinus={handleMinus} handlePlus={handlePlus} />
+                    <button onClick={() => handleAddOrUpdateCoffe(item, coffeeQuantiy)}>
                         <IconButton />
                     </button>
                 </div>

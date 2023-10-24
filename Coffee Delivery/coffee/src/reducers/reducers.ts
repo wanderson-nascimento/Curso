@@ -1,16 +1,31 @@
-import {produce} from 'immer'
+import { produce } from 'immer'
 import { ActionTypes } from './actions';
-import {OrderFormContextType} from '../contexts/OrderFormContext'
+import { OrderFormContextType } from '../contexts/OrderFormContext'
 
 
 
-export function orderFormReducer(state: OrderFormContextType, action:any){
-    switch(action.type){
+export function orderFormReducer(state: OrderFormContextType, action: any) {
+    switch (action.type) {
         case ActionTypes.ADD_COFFEE:
             return produce(state, (draft) => {
-                draft.itemData.push(action.payload.coffeeItem)
+
+                const coffeeWithQuantity = {
+                    ...action.payload.coffeeItem,
+                    quantity: action.payload.quantity
+                };
+                draft.itemData.push(coffeeWithQuantity)
+
             })
+        case ActionTypes.UPDATE_COFFEE:
+            return produce(state, (draft) => {
+                draft.itemData[action.payload.coffeeItem].quantity = action.payload.quantity
+            })
+        case ActionTypes.REMOVE_COFFEE:
+            return produce(state, (draft) => {
+                draft.itemData.splice(action.payload.coffeeItem, 1)
+            })
+
         default:
-            return state                        
-    }   
+            return state
+    }
 }

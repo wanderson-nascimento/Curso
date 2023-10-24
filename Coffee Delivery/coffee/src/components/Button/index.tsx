@@ -2,24 +2,19 @@ import { useState } from "react";
 import { IncrementButtonStyle, PlaceOrderButtonContainer, RemoveButtonStyle, IconButtonContainer, LocationButtonContainer, CartButtonContainer } from "./styles";
 import { Plus, Minus, ShoppingCartSimple, MapPin, Trash } from '@phosphor-icons/react'
 
-export function IncrementButton() {
-    const [coffeeQuantiy, setCoffeeQuantity] = useState(1)
+interface IncrementButtonProps {
+    coffeeQuantity: number,
+    handleMinus: () => void,
+    handlePlus: () => void
+}
 
-    function handlePlus() {
-        setCoffeeQuantity(prevCoffeeQuantity => prevCoffeeQuantity + 1)
-    }
-
-    function handleMinus() {
-        if (coffeeQuantiy > 0) {
-            setCoffeeQuantity(prevCoffeeQuantity => prevCoffeeQuantity - 1)
-        }
-    }
+export function IncrementButton(coffeQuantityData: IncrementButtonProps) {
 
     return (
         <IncrementButtonStyle>
-            <button onClick={handleMinus}><Minus size={14} /></button>
-            <span>{coffeeQuantiy}</span>
-            <button onClick={handlePlus}><Plus size={14} /></button>
+            <button onClick={coffeQuantityData.handleMinus}><Minus size={14} /></button>
+            <span>{coffeQuantityData.coffeeQuantity}</span>
+            <button onClick={coffeQuantityData.handlePlus}><Plus size={14} /></button>
         </IncrementButtonStyle>
     )
 }

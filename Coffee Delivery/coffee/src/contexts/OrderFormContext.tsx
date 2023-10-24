@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode, useReducer, useEffect } from "react"
-import { addCoffee } from "../reducers/actions"
-import {orderFormReducer} from "../reducers/reducers"
+import { addCoffeeAction, updateCoffeeAction } from "../reducers/actions"
+import { orderFormReducer } from "../reducers/reducers"
 
 export interface ItemsDataType {
     id: number | null
@@ -9,9 +9,10 @@ export interface ItemsDataType {
     label: string[]
     description: string | null
     price: string | null
+    quantity?: number | null
 }
 
-export interface ItemsDataProps{
+export interface ItemsDataProps {
     item: ItemsDataType
 }
 
@@ -31,13 +32,13 @@ export interface OrderFormContextType {
     profileData: ProfileDataType[] | null;
     paymentData: string | null;
     itemData: ItemsDataType[];
-    addNewCoffeeType: (data: ItemsDataType) => void
-    // createNewCycle: (data: ItemsDataType) => void;
+    addNewCoffeeType: (data: ItemsDataType, quantity: number) => void;
+    updateCoffeQuantity: (data: number, quantity: number) => void;
 }
 
 export const OrderFormContext = createContext({} as OrderFormContextType)
 
-interface OrderFormContextProviderProps{
+interface OrderFormContextProviderProps {
     children: ReactNode
 }
 
@@ -45,58 +46,62 @@ interface OrderFormContextProviderProps{
 
 
 
-export function OrderFormContextProvider({ children }:OrderFormContextProviderProps) {
-    // const [itemsData, setItemsData] = useState<ItemsDataType[]>([])
+export function OrderFormContextProvider({ children }: OrderFormContextProviderProps) {
     const [profileData, setProfileData] = useState<ProfileDataType[]>([])
     const [paymentData, setPaymentData] = useState(null)
 
     const [orderFormState, dispatch] = useReducer(orderFormReducer, {
         profileData: [],
-        paymentData: null,    
+        paymentData: null,
         itemData: [],
-        addNewCoffeeType
+        addNewCoffeeType,
+        updateCoffeQuantity
     },
-    (initialState) => {
-        const storedStateAsJSON = localStorage.getItem(
-          '@ignite-timer:orderFormes-state-1.0.0',
-        )
-  
-        if (storedStateAsJSON) {
-          return JSON.parse(storedStateAsJSON)
-        }
-  
-        return initialState
-      },
+        (initialState) => {
+            const storedStateAsJSON = localStorage.getItem(
+                '@ignite-timer:orderFormes-state-1.0.0',
+            )
+
+            if (storedStateAsJSON) {
+                return JSON.parse(storedStateAsJSON)
+            }
+
+            return initialState
+        },
     )
 
     useEffect(() => {
         console.log(orderFormState)
-    },[orderFormState])
+    }, [orderFormState])
 
-    const {itemData} = orderFormState
+    const { itemData } = orderFormState
 
 
-    function addNewCoffeeType(data: ItemsDataType){
-        const newCoffeeToAdd:ItemsDataType = {
-                id: data.id,
-                name: data.name,
-                img: data.img,
-                label: data.label,
-                description: data.description,
-                price: data.price,
-              }
-              dispatch(addCoffee(newCoffeeToAdd))
-            }
+    function addNewCoffeeType(data: ItemsDataType, quantity: number) {
+        const newCoffeeToAdd: ItemsDataType = {
+            id: data.id,
+            name: data.name,
+            img: data.img,
+            label: data.label,
+            description: data.description,
+            price: data.price
+        }
+        dispatch(addCoffeeAction(newCoffeeToAdd, quantity))
+    }
+
+    function updateCoffeQuantity(itemToUpdate: number, quantity: number) {
+        dispatch(updateCoffeeAction(itemToUpdate, quantity))
+    }
 
     return (
         <OrderFormContext.Provider
-        value={{
-            profileData,
-            paymentData,
-            itemData,
-            addNewCoffeeType,
-            // createNewCycle
-          }}
+            value={{
+                profileData,
+                paymentData,
+                itemData,
+                addNewCoffeeType,
+                updateCoffeQuantity,
+            }}
         >
             {children}
         </OrderFormContext.Provider>
