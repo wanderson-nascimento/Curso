@@ -22,7 +22,6 @@ export function orderFormReducer(state: OrderFormContextType, action: any) {
 
         case ActionTypes.REMOVE_COFFEE:
             return produce(state, (draft) => {
-                console.log('Case do reducer', action.payload.coffeeItem)
                 draft.itemData.splice(action.payload.coffeeItem, 1)
             })
 

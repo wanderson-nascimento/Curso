@@ -83,20 +83,18 @@ export const CoffeeCardFooter = styled.div`
 display: flex;
 width: 208px;
 justify-content: space-between;
-align-items: center;
+align-items: end;
 margin-top:33px;
-justify-content:space-between;
 
 pre{
-   align-self: flex-end;
-   font-size:14px;
+   font-size:14px; 
+   align-self:center
 }
 
 p{
     font-family: 'Baloo 2';
     font-size: 24px;
     font-weight: 800;
-    align-self: flex-end;
 }
 `
 

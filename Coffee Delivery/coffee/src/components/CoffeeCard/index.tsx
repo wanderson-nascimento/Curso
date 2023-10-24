@@ -24,7 +24,6 @@ export function CoffeeCard({ item }: ItemsDataProps) {
         if (itemToUpdate < 0) {
             addNewCoffeeType(item, coffeeQuantiy)
         } else if (coffeeQuantiy == 0) {
-            console.log('função se a quantidade for igual a 0')
             removeCoffee(itemToUpdate)
         }
         else {
@@ -32,8 +31,6 @@ export function CoffeeCard({ item }: ItemsDataProps) {
         }
 
     }
-
-
 
     return (
         <CoffeeCardContainer>

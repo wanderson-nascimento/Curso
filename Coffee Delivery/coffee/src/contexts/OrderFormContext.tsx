@@ -96,7 +96,6 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
     }
 
     function removeCoffee(itemToUpdate: number) {
-        console.log('função dentro do context')
         dispatch(removeCoffeeAction(itemToUpdate))
     }
 

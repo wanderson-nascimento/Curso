@@ -27,7 +27,6 @@ export function updateCoffeeAction(coffeeItem:number, quantity:number){
 }
 
 export function removeCoffeeAction(coffeeItem:number){
-    console.log('função do action de remover')
     return{
         type: ActionTypes.REMOVE_COFFEE,
         payload:{
