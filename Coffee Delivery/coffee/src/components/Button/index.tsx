@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IncrementButtonStyle, PlaceOrderButtonContainer, RemoveButtonStyle, IconButtonContainer, LocationButtonContainer, CartButtonContainer } from "./styles";
 import { Plus, Minus, ShoppingCartSimple, MapPin, Trash } from '@phosphor-icons/react'
 
@@ -6,6 +5,10 @@ interface IncrementButtonProps {
     coffeeQuantity: number,
     handleMinus: () => void,
     handlePlus: () => void
+}
+
+interface RemoveButtonProps {
+    handleRemoveCoffee: () => void
 }
 
 export function IncrementButton(coffeQuantityData: IncrementButtonProps) {
@@ -43,7 +46,7 @@ export function CartButton() {
     )
 }
 
-export function IncrementChekoutButton() {
+export function IncrementCheckoutButton() {
     return (
         <IncrementButtonStyle>
             <button><Minus size={14} /></button>
@@ -53,11 +56,11 @@ export function IncrementChekoutButton() {
     )
 }
 
-export function RemoveButton() {
+export function RemoveButton(data:RemoveButtonProps) {
     return (
-        <RemoveButtonStyle>
-            <Trash size={16} />
-            <p>REMOVER</p>
+        <RemoveButtonStyle onClick={data.handleRemoveCoffee}>
+                <Trash size={16} />
+                <p>REMOVER</p>
         </RemoveButtonStyle>
     )
 }

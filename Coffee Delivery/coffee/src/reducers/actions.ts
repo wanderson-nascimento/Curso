@@ -4,6 +4,7 @@ export enum ActionTypes{
     ADD_COFFEE = 'ADD_COFFEE',
     UPDATE_COFFEE = 'UPDATE_COFFEE',
     REMOVE_COFFEE = 'REMOVE_COFFEE', 
+    UPDATE_COFFEE_LIST = 'UPDATE_COFFEE_LIST', 
 }
 
 export function addCoffeeAction(coffeeItem:ItemsDataType, quantity:number){

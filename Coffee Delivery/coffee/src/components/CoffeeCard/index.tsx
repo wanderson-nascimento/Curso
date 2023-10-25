@@ -1,13 +1,13 @@
 import { CoffeeCardContainer, CoffeeCardCheckoutFooter, CoffeeTypes, CoffeeCardFooter, CoffeeCardCheckoutContainer } from "./styles"
 import expressoTradicional from '../../assets/coffeeImages/expressoTradicional.svg'
-import { IncrementButton, IconButton, IncrementChekoutButton, RemoveButton, } from "../Button/index"
+import { IncrementButton, IconButton, IncrementCheckoutButton, RemoveButton, } from "../Button/index"
 import { ItemsDataProps, ItemsDataType, OrderFormContext } from '../../contexts/OrderFormContext'
 import { useContext, useState } from "react"
 
 
 export function CoffeeCard({ item }: ItemsDataProps) {
     const [coffeeQuantiy, setCoffeeQuantity] = useState(1)
-    const { addNewCoffee, itemData, updateCoffeQuantity, removeCoffee  } = useContext(OrderFormContext)
+    const { addNewCoffee, itemData, updateCoffeQuantity, removeCoffee } = useContext(OrderFormContext)
 
     function handlePlus() {
         setCoffeeQuantity(prevCoffeeQuantity => prevCoffeeQuantity + 1)
@@ -61,22 +61,29 @@ export function CoffeeCard({ item }: ItemsDataProps) {
     )
 }
 
-export function CoffeeCardCheckout() {
+export function CoffeeCardCheckout({ item }: ItemsDataProps) {
+    const {removeCoffee, itemData} = useContext(OrderFormContext)
+    const itemToUpdate = itemData.findIndex(element => element.id === item.id)
+
+    function handleRemoveCoffee() {
+        removeCoffee(itemToUpdate)
+    }
+
     return (
-        <><hr color="red" />
+        <>
             <CoffeeCardCheckoutContainer>
-                <img src={expressoTradicional} ></img>
+                <img src={item.img} ></img>
                 <main>
-                    <h3>Expresso Tradicional</h3>
+                    <h3>{item.name}</h3>
                     <div>
-                        <IncrementChekoutButton />
-                        <RemoveButton />
+                        <IncrementCheckoutButton />
+                        <RemoveButton handleRemoveCoffee={handleRemoveCoffee} />
                     </div>
                 </main>
                 <CoffeeCardCheckoutFooter>
                     <div>
                         <p>R$ </p>
-                        <p>9,90</p>
+                        <p>{item.price}</p>
                     </div>
                 </CoffeeCardCheckoutFooter>
 

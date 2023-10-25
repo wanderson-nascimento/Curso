@@ -117,10 +117,22 @@ background-color: ${props => props.theme['yellow-light']};
 }
 `
 
-export const RemoveButtonStyle = styled(IncrementButtonStyle)`
- color: ${props => props.theme['base-text']};
- width:91px;
- font-weight: 400;
+export const RemoveButtonStyle = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 8px;
+  gap: 4px;
+  
+
+  border-radius: 6px;
+  border:none;
+  color: ${props => props.theme['base-text']};
+  font-size: 12px;
+  font-weight: 400;
+
+  background-color: ${props => props.theme['base-button']};
+ 
 
  svg{
   color: ${props => props.theme['purple']};

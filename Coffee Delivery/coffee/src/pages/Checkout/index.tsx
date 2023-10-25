@@ -2,14 +2,18 @@ import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-i
 import { CheckoutContainer, Totalizers, CheckoutPlaceOrderContainer, PaymentsCard, CheckoutPaymentContainer, PaymentsCardList, HeaderForm, HeaderPaymentContainer, CheckoutFormContainer, CepInput, RuaInput, ComplementoInput, UFInput } from "./styles";
 import { CoffeeCardCheckout } from '../../components/CoffeeCard'
 import { PlaceOrderButton } from "../../components/Button";
+import { OrderFormContext } from '../../contexts/OrderFormContext'
+import { useContext } from "react"
 
 export function Checkout() {
+    const { itemData } = useContext(OrderFormContext)
+
     return (
         <CheckoutContainer>
             <CheckoutFormContainer>
                 <h2>Complete seu pedido</h2>
                 <HeaderForm>
-                    <MapPinLine size={22}  />
+                    <MapPinLine size={22} />
                     <div><h3>Endereço de Entrega</h3>
                         <p>Informe o endereço onde deseja receber seu pedido</p>
                     </div>
@@ -26,8 +30,14 @@ export function Checkout() {
             </CheckoutFormContainer>
             <CheckoutPlaceOrderContainer>
                 <h2>Cafés selecionados</h2>
-                <CoffeeCardCheckout />
-                <CoffeeCardCheckout />
+                {itemData.map(item => {
+                    return (
+                        < CoffeeCardCheckout
+                            key={item.id}
+                            item={item}
+                        />
+                    )
+                })}
                 <Totalizers>
                     <section>
                         <span>Total de itens</span>
@@ -41,7 +51,7 @@ export function Checkout() {
                         <h3>Total</h3>
                         <h3>R$ 33,20</h3>
                     </section>
-                    <PlaceOrderButton/>
+                    <PlaceOrderButton />
                 </Totalizers>
             </CheckoutPlaceOrderContainer>
             <CheckoutPaymentContainer>
