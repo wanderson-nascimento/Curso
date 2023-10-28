@@ -46,15 +46,7 @@ export function CartButton() {
     )
 }
 
-export function IncrementCheckoutButton() {
-    return (
-        <IncrementButtonStyle>
-            <button><Minus size={14} /></button>
-            <span>1</span>
-            <button><Plus size={14} /></button>
-        </IncrementButtonStyle>
-    )
-}
+
 
 export function RemoveButton(data:RemoveButtonProps) {
     return (

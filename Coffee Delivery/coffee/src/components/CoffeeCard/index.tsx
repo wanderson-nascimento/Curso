@@ -1,8 +1,7 @@
 import { CoffeeCardContainer, CoffeeCardCheckoutFooter, CoffeeTypes, CoffeeCardFooter, CoffeeCardCheckoutContainer } from "./styles"
-import expressoTradicional from '../../assets/coffeeImages/expressoTradicional.svg'
-import { IncrementButton, IconButton, IncrementCheckoutButton, RemoveButton, } from "../Button/index"
+import { IncrementButton, IconButton, RemoveButton, } from "../Button/index"
 import { ItemsDataProps, ItemsDataType, OrderFormContext } from '../../contexts/OrderFormContext'
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 
 
 export function CoffeeCard({ item }: ItemsDataProps) {
@@ -37,8 +36,9 @@ export function CoffeeCard({ item }: ItemsDataProps) {
             <img src={item.img}></img>
             <div>
                 {item.label.map((label) => (
-                    <CoffeeTypes>
-                        <p key={item.id}>{label}</p>
+                    <CoffeeTypes
+                        key={label}>
+                        <p >{label}</p>
                     </CoffeeTypes>
                 ))
                 }
@@ -62,12 +62,32 @@ export function CoffeeCard({ item }: ItemsDataProps) {
 }
 
 export function CoffeeCardCheckout({ item }: ItemsDataProps) {
-    const {removeCoffee, itemData} = useContext(OrderFormContext)
+    const [coffeeQuantiy, setCoffeeQuantity] = useState(item.quantity)
+    const { itemData, removeCoffee, updateCoffeQuantity } = useContext(OrderFormContext)
+
     const itemToUpdate = itemData.findIndex(element => element.id === item.id)
+ 
 
     function handleRemoveCoffee() {
         removeCoffee(itemToUpdate)
     }
+
+    function handlePlus() {
+        console.log('quantidade de cafe antes',coffeeQuantiy)
+        setCoffeeQuantity(prevCoffeeQuantity => (prevCoffeeQuantity ?? 0) + 1)
+    }
+
+    function handleMinus() {
+        if (coffeeQuantiy) {
+            setCoffeeQuantity(prevCoffeeQuantity => (prevCoffeeQuantity ?? 0) - 1)
+            
+        }
+    }
+
+    useEffect( () =>{
+        updateCoffeQuantity(itemToUpdate, (coffeeQuantiy ?? 0))
+        console.log('quantidade de cafe depois do setstate',coffeeQuantiy)
+    },[coffeeQuantiy])
 
     return (
         <>
@@ -76,7 +96,7 @@ export function CoffeeCardCheckout({ item }: ItemsDataProps) {
                 <main>
                     <h3>{item.name}</h3>
                     <div>
-                        <IncrementCheckoutButton />
+                        <IncrementButton coffeeQuantity={coffeeQuantiy ?? 0} handleMinus={handleMinus} handlePlus={handlePlus} />
                         <RemoveButton handleRemoveCoffee={handleRemoveCoffee} />
                     </div>
                 </main>
