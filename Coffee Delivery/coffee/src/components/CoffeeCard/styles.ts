@@ -104,6 +104,7 @@ padding: 8px 4px;
 justify-content: flex-start;
 align-items: flex-start;
 width:360px;
+border-bottom: 1px solid #E6E5E5; /* Isso aplica uma borda inferior preta de 2px */
 
 main{
 display: flex;

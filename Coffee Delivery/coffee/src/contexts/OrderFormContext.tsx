@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode, useReducer, useEffect } from "react"
-import { addCoffeeAction, updateCoffeeAction, removeCoffeeAction } from "../reducers/actions"
+import { addCoffeeAction, updateCoffeeAction, removeCoffeeAction, updateTotalizerAction } from "../reducers/actions"
 import { orderFormReducer } from "../reducers/reducers"
 
 export interface ItemsDataType {
@@ -9,7 +9,7 @@ export interface ItemsDataType {
     label: string[]
     description: string | null
     price: string | null
-    quantity?: number | null
+    quantity: number 
 }
 
 export interface ItemsDataProps {
@@ -32,9 +32,11 @@ export interface OrderFormContextType {
     profileData: ProfileDataType[] | null;
     paymentData: string | null;
     itemData: ItemsDataType[];
+    totalizer: number ;
     addNewCoffee: (data: ItemsDataType, quantity: number) => void;
     updateCoffeQuantity: (data: number, quantity: number) => void;
     removeCoffee: (data: number) => void;
+    updateTotalizer: () => void;
 }
 
 export const OrderFormContext = createContext({} as OrderFormContextType)
@@ -50,14 +52,17 @@ interface OrderFormContextProviderProps {
 export function OrderFormContextProvider({ children }: OrderFormContextProviderProps) {
     const [profileData, setProfileData] = useState<ProfileDataType[]>([])
     const [paymentData, setPaymentData] = useState(null)
+    const [totalizer, setTotalizer] = useState(0)
 
     const [orderFormState, dispatch] = useReducer(orderFormReducer, {
         profileData: [],
         paymentData: null,
         itemData: [],
+        totalizer: 0,
         addNewCoffee,
         updateCoffeQuantity,
-        removeCoffee
+        removeCoffee,
+        updateTotalizer,
     },
         (initialState) => {
             const storedStateAsJSON = localStorage.getItem(
@@ -73,7 +78,8 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
     )
 
     useEffect(() => {
-        console.log(orderFormState)
+        updateTotalizer();
+        console.log(orderFormState);
     }, [orderFormState])
 
     const { itemData } = orderFormState
@@ -86,12 +92,14 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
             img: data.img,
             label: data.label,
             description: data.description,
-            price: data.price
+            price: data.price,
+            quantity: data.quantity
         }
         dispatch(addCoffeeAction(newCoffeeToAdd, quantity))
     }
 
     function updateCoffeQuantity(itemToUpdate: number, quantity: number) {
+        console.log('função dentro do contexto')
         dispatch(updateCoffeeAction(itemToUpdate, quantity))
     }
 
@@ -99,15 +107,22 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         dispatch(removeCoffeeAction(itemToUpdate))
     }
 
+    function updateTotalizer() {
+        dispatch(updateTotalizerAction())
+    }
+
+
     return (
         <OrderFormContext.Provider
             value={{
                 profileData,
                 paymentData,
                 itemData,
+                totalizer,
                 addNewCoffee,
                 updateCoffeQuantity,
-                removeCoffee
+                removeCoffee,
+                updateTotalizer,
             }}
         >
             {children}

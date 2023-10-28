@@ -20,12 +20,16 @@ export function CoffeeCard({ item }: ItemsDataProps) {
 
     function handleAddOrUpdateCoffe(item: ItemsDataType, coffeeQuantiy: number) {
         const itemToUpdate = itemData.findIndex(element => element.id === item.id)
+
         if (itemToUpdate < 0) {
+            console.log('Indixe do item a ser adiocionado', itemToUpdate)
             addNewCoffee(item, coffeeQuantiy)
         } else if (coffeeQuantiy == 0) {
+            console.log('Para o caso da quantidade ser zero', itemToUpdate)
             removeCoffee(itemToUpdate)
         }
         else {
+            console.log('Indixe do item a ser adicionado ', itemToUpdate, 'A quantidade de café a ser add é ', coffeeQuantiy)
             updateCoffeQuantity(itemToUpdate, coffeeQuantiy)
         }
 
@@ -66,28 +70,26 @@ export function CoffeeCardCheckout({ item }: ItemsDataProps) {
     const { itemData, removeCoffee, updateCoffeQuantity } = useContext(OrderFormContext)
 
     const itemToUpdate = itemData.findIndex(element => element.id === item.id)
- 
+
 
     function handleRemoveCoffee() {
         removeCoffee(itemToUpdate)
     }
 
     function handlePlus() {
-        console.log('quantidade de cafe antes',coffeeQuantiy)
         setCoffeeQuantity(prevCoffeeQuantity => (prevCoffeeQuantity ?? 0) + 1)
     }
 
     function handleMinus() {
         if (coffeeQuantiy) {
             setCoffeeQuantity(prevCoffeeQuantity => (prevCoffeeQuantity ?? 0) - 1)
-            
+
         }
     }
 
-    useEffect( () =>{
+    useEffect(() => {
         updateCoffeQuantity(itemToUpdate, (coffeeQuantiy ?? 0))
-        console.log('quantidade de cafe depois do setstate',coffeeQuantiy)
-    },[coffeeQuantiy])
+    }, [coffeeQuantiy])
 
     return (
         <>
@@ -106,7 +108,7 @@ export function CoffeeCardCheckout({ item }: ItemsDataProps) {
                         <p>{item.price}</p>
                     </div>
                 </CoffeeCardCheckoutFooter>
-
+                
             </CoffeeCardCheckoutContainer>
         </>
     )

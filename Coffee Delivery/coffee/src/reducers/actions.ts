@@ -4,7 +4,8 @@ export enum ActionTypes{
     ADD_COFFEE = 'ADD_COFFEE',
     UPDATE_COFFEE = 'UPDATE_COFFEE',
     REMOVE_COFFEE = 'REMOVE_COFFEE', 
-    UPDATE_COFFEE_LIST = 'UPDATE_COFFEE_LIST', 
+    UPDATE_TOTAL = 'UPDATE_TOTAL', 
+
 }
 
 export function addCoffeeAction(coffeeItem:ItemsDataType, quantity:number){
@@ -33,5 +34,11 @@ export function removeCoffeeAction(coffeeItemId:number){
         payload:{
             coffeeItemId
         }
+    }
+}
+
+export function updateTotalizerAction(){
+    return{
+        type: ActionTypes.UPDATE_TOTAL
     }
 }
