@@ -1,13 +1,14 @@
 import { HeaderContainer } from './styles'
-import { ShoppingCart, MapPinLine } from '@phosphor-icons/react'
-
-
 import logoCoffee from '../../assets/logoCafe.svg'
-
 import { NavLink } from 'react-router-dom'
 import { CartButton, LocationButton } from '../Button'
+import { useContext } from "react"
+import { OrderFormContext } from '../../contexts/OrderFormContext'
+
+
 
 export function Header() {
+    const { itemData } = useContext(OrderFormContext);
     return (
         <HeaderContainer>
             <span>
@@ -18,7 +19,10 @@ export function Header() {
                     <LocationButton />
                 </NavLink>
                 <NavLink to="/checkout" title="Checkout">
-                    <CartButton/>
+                    <div>
+                        <CartButton />
+                        <p>{itemData.length}</p>
+                    </div>
                 </NavLink>
             </nav>
         </HeaderContainer>

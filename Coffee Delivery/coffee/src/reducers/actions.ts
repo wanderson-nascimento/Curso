@@ -18,11 +18,11 @@ export function addCoffeeAction(coffeeItem:ItemsDataType, quantity:number){
     }
 }
 
-export function updateCoffeeAction(coffeeItem:number, quantity:number){
+export function updateCoffeeAction(coffeeItemId:number, quantity:number){
     return{
         type: ActionTypes.UPDATE_COFFEE,
         payload:{
-            coffeeItem,
+            coffeeItemId,
             quantity
         }
     }

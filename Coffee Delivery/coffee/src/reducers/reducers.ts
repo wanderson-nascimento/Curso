@@ -17,14 +17,7 @@ export function orderFormReducer(state: OrderFormContextType, action: any) {
 
         case ActionTypes.UPDATE_COFFEE:
             return produce(state, (draft) => {
-                console.log('action dentro do reducer, a o index é', action.payload.coffeeItem, 'E a quantidade é ', action.payload.quantity)
-                if (action.payload.quantity !== 1) {
-                    console.log('A quantidade é difernete de 1', action.payload.quantity)
-                    draft.itemData[action.payload.coffeeItem].quantity = action.payload.quantity
-                } else {
-                    console.log('A quantidade é 1', action.payload.quantity);
-                        draft.itemData[action.payload.coffeeItem].quantity += 1;
-                }
+                draft.itemData[action.payload.coffeeItemId].quantity += action.payload.quantity;
             })
 
         case ActionTypes.REMOVE_COFFEE:
@@ -39,7 +32,7 @@ export function orderFormReducer(state: OrderFormContextType, action: any) {
                         if (!currentItem.price) {
                             return accumulator;
                         }
-                        return accumulator + (parseFloat(currentItem.price.replace(',', '.'))*currentItem.quantity);
+                        return accumulator + (parseFloat(currentItem.price.replace(',', '.')) * currentItem.quantity);
                     }, 0)
                 draft.totalizer = parseFloat(total.toFixed(2));
             })

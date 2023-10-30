@@ -6,7 +6,7 @@ import { OrderFormContext } from '../../contexts/OrderFormContext'
 import { useContext } from "react"
 
 export function Checkout() {
-    const { itemData } = useContext(OrderFormContext)
+    const { itemData, totalizer } = useContext(OrderFormContext);
 
     return (
         <CheckoutContainer>
@@ -41,15 +41,15 @@ export function Checkout() {
                 <Totalizers>
                     <section>
                         <span>Total de itens</span>
-                        <p>R$ 29,70</p>
+                        <p>{`R$ ${totalizer.toFixed(2)}`}</p>
                     </section>
                     <section>
                         <p>Entrega</p>
-                        <p>R$ 3,50</p>
+                        <p>R$ 3.50</p>
                     </section>
                     <section>
                         <h3>Total</h3>
-                        <h3>R$ 33,20</h3>
+                        <h3>{`R$ ${(totalizer + 3.5).toFixed(2)}`}</h3>
                     </section>
                     <PlaceOrderButton />
                 </Totalizers>

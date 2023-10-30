@@ -9,7 +9,7 @@ export interface ItemsDataType {
     label: string[]
     description: string | null
     price: string | null
-    quantity: number 
+    quantity: number | null
 }
 
 export interface ItemsDataProps {
@@ -50,10 +50,6 @@ interface OrderFormContextProviderProps {
 
 
 export function OrderFormContextProvider({ children }: OrderFormContextProviderProps) {
-    const [profileData, setProfileData] = useState<ProfileDataType[]>([])
-    const [paymentData, setPaymentData] = useState(null)
-    const [totalizer, setTotalizer] = useState(0)
-
     const [orderFormState, dispatch] = useReducer(orderFormReducer, {
         profileData: [],
         paymentData: null,
@@ -77,13 +73,12 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         },
     )
 
+    const { itemData, totalizer, paymentData, profileData } = orderFormState
+
     useEffect(() => {
         updateTotalizer();
         console.log(orderFormState);
-    }, [orderFormState])
-
-    const { itemData } = orderFormState
-
+    }, [itemData])
 
     function addNewCoffee(data: ItemsDataType, quantity: number) {
         const newCoffeeToAdd: ItemsDataType = {
@@ -99,7 +94,6 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
     }
 
     function updateCoffeQuantity(itemToUpdate: number, quantity: number) {
-        console.log('função dentro do contexto')
         dispatch(updateCoffeeAction(itemToUpdate, quantity))
     }
 
