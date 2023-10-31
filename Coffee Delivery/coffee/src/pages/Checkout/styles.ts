@@ -144,11 +144,18 @@ export const PaymentsCard = styled.div`
     gap: 12px;
     font-size: 12px;
     white-space: nowrap;
+    border: 1px solid transparent;
 
     border-radius: 6px;
     background:${(props) => props.theme['base-button']};
 
     &:hover{
+        background:${(props) => props.theme['base-hover']};
+        border: 1px solid transparent;
+        cursor: pointer;
+    }
+
+    &:active{
         background:${(props) => props.theme['purple-light']};
         border: 1px solid ${(props) => props.theme['purple']};
     }

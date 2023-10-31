@@ -21,7 +21,7 @@ export function Header() {
                 <NavLink to="/checkout" title="Checkout">
                     <div>
                         <CartButton />
-                        <p>{itemData.length}</p>
+                        {itemData.length>0 && <p>{itemData.length}</p>}
                     </div>
                 </NavLink>
             </nav>

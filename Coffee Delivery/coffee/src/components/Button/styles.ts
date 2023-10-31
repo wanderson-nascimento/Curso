@@ -65,6 +65,7 @@ button{
 
   &:hover{
     color: ${props => props.theme['purple-dark']};
+    cursor:pointer;
   }
 }
 
@@ -86,6 +87,7 @@ background: ${props => props.theme['purple-dark']};
 
 &:hover{
   background: ${props => props.theme['purple']};
+  cursor:pointer;
 }
 `
 export const LocationButtonContainer = styled(SecondaryButton)`
@@ -103,6 +105,7 @@ background-color: ${props => props.theme['purple-light']};
 
 &:hover{
   background-color: ${props => props.theme['white']};
+  cursor:pointer;
 }
 `
 
@@ -114,6 +117,7 @@ background-color: ${props => props.theme['yellow-light']};
 
 &:hover{
   background-color: ${props => props.theme['white']};
+  cursor:pointer;
 }
 `
 
@@ -132,6 +136,10 @@ export const RemoveButtonStyle = styled.button`
   font-weight: 400;
 
   background-color: ${props => props.theme['base-button']};
+
+  &:hover{
+    cursor:pointer;
+  }
  
 
  svg{
@@ -149,7 +157,9 @@ text-transform: uppercase;
 font-size: 14px;
 font-weight: 700;
 
-
+&:hover{
+  cursor:pointer;
+}
 
 border-radius: 6px;
 

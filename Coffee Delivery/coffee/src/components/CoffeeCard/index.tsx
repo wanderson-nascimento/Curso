@@ -1,11 +1,11 @@
 import { CoffeeCardContainer, CoffeeCardCheckoutFooter, CoffeeTypes, CoffeeCardFooter, CoffeeCardCheckoutContainer } from "./styles"
 import { IncrementButton, IconButton, RemoveButton, } from "../Button/index"
 import { ItemsDataProps, ItemsDataType, OrderFormContext } from '../../contexts/OrderFormContext'
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 
 
 export function CoffeeCard({ item }: ItemsDataProps) {
-    const [coffeeQuantity, setCoffeeQuantity] = useState(item.quantity ?? 1)
+    const [coffeeQuantity] = useState(item.quantity ?? 1)
     const { addNewCoffee, itemData, updateCoffeQuantity, removeCoffee } = useContext(OrderFormContext)
 
     const itemToUpdate = itemData.findIndex(element => element.id === item.id)
@@ -68,8 +68,7 @@ export function CoffeeCard({ item }: ItemsDataProps) {
 }
 
 export function CoffeeCardCheckout({ item }: ItemsDataProps) {
-    const [coffeeQuantity, setCoffeeQuantity] = useState(item.quantity)
-    const { itemData, removeCoffee, updateCoffeQuantity } = useContext(OrderFormContext)
+    const { itemData, removeCoffee, addNewCoffee, updateCoffeQuantity } = useContext(OrderFormContext)
 
     const itemToUpdate = itemData.findIndex(element => element.id === item.id)
 
@@ -79,14 +78,16 @@ export function CoffeeCardCheckout({ item }: ItemsDataProps) {
     }
 
     function handlePlus() {
-        setCoffeeQuantity(prevCoffeeQuantity => (prevCoffeeQuantity ?? 0) + 1)
-        updateCoffeQuantity(itemToUpdate, (coffeeQuantity ?? 0))
+        if (itemToUpdate >= 0) {
+            updateCoffeQuantity(itemToUpdate, 1)
+        } else addNewCoffee(item, 1)
     }
 
     function handleMinus() {
-        if (coffeeQuantity) {
-            setCoffeeQuantity(prevCoffeeQuantity => (prevCoffeeQuantity ?? 0) - 1)
-            updateCoffeQuantity(itemToUpdate, (coffeeQuantity ?? 0))
+        if (itemToUpdate !== -1) {
+            if ((itemData[itemToUpdate].quantity ?? 1) > 1) {
+                updateCoffeQuantity(itemToUpdate, -1)
+            } else { removeCoffee(itemToUpdate) }
         }
     }
 
@@ -97,7 +98,7 @@ export function CoffeeCardCheckout({ item }: ItemsDataProps) {
                 <main>
                     <h3>{item.name}</h3>
                     <div>
-                        <IncrementButton coffeeQuantity={coffeeQuantity ?? 0} handleMinus={handleMinus} handlePlus={handlePlus} />
+                        <IncrementButton coffeeQuantity={itemData[itemToUpdate].quantity ?? 0} handleMinus={handleMinus} handlePlus={handlePlus} />
                         <RemoveButton handleRemoveCoffee={handleRemoveCoffee} />
                     </div>
                 </main>
