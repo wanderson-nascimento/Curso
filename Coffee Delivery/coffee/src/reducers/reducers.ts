@@ -37,6 +37,11 @@ export function orderFormReducer(state: OrderFormContextType, action: any) {
                 draft.totalizer = parseFloat(total.toFixed(2));
             })
 
+            case ActionTypes.ADD_PAYMENT:
+                return produce(state, (draft) => {
+                    draft.paymentData = action.payload.paymentMethod
+                })
+
         default:
             return state
     }

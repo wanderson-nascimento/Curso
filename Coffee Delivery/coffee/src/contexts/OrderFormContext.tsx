@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode, useReducer, useEffect } from "react"
-import { addCoffeeAction, updateCoffeeAction, removeCoffeeAction, updateTotalizerAction } from "../reducers/actions"
+import { addCoffeeAction, updateCoffeeAction, removeCoffeeAction, updateTotalizerAction, addPaymentAction } from "../reducers/actions"
 import { orderFormReducer } from "../reducers/reducers"
 
 export interface ItemsDataType {
@@ -30,13 +30,14 @@ interface ProfileDataType {
 
 export interface OrderFormContextType {
     profileData: ProfileDataType[] | null;
-    paymentData: string | null;
+    paymentData: string;
     itemData: ItemsDataType[];
-    totalizer: number ;
+    totalizer: number;
     addNewCoffee: (data: ItemsDataType, quantity: number) => void;
     updateCoffeQuantity: (data: number, quantity: number) => void;
     removeCoffee: (data: number) => void;
     updateTotalizer: () => void;
+    addPayment: (data: string) => void;
 }
 
 export const OrderFormContext = createContext({} as OrderFormContextType)
@@ -59,10 +60,11 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         updateCoffeQuantity,
         removeCoffee,
         updateTotalizer,
+        addPayment
     },
         (initialState) => {
             const storedStateAsJSON = localStorage.getItem(
-                '@ignite-timer:orderFormes-state-1.0.0',
+                '@ignite-timer:orderForms-state-1.0.0',
             )
 
             if (storedStateAsJSON) {
@@ -78,7 +80,7 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
     useEffect(() => {
         updateTotalizer();
         console.log(orderFormState);
-    }, [itemData])
+    }, [orderFormState])
 
     function addNewCoffee(data: ItemsDataType, quantity: number) {
         const newCoffeeToAdd: ItemsDataType = {
@@ -105,6 +107,10 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         dispatch(updateTotalizerAction())
     }
 
+    function addPayment(paymentMethod: string) {
+        dispatch(addPaymentAction(paymentMethod))
+    }
+
 
     return (
         <OrderFormContext.Provider
@@ -117,6 +123,7 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
                 updateCoffeQuantity,
                 removeCoffee,
                 updateTotalizer,
+                addPayment
             }}
         >
             {children}

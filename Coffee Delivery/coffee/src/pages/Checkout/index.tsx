@@ -6,7 +6,16 @@ import { OrderFormContext } from '../../contexts/OrderFormContext'
 import { useContext } from "react"
 
 export function Checkout() {
-    const { itemData, totalizer } = useContext(OrderFormContext);
+    const { itemData, totalizer, addPayment } = useContext(OrderFormContext);
+
+    function handleClickPayment(event: React.MouseEvent<HTMLElement>) {
+        const paymentType = event.currentTarget.textContent;
+        if (paymentType !== null)
+        addPayment(paymentType)
+        
+        console.log(`Pagamento selecionado foi ${paymentType}`);
+
+    }
 
     return (
         <CheckoutContainer>
@@ -63,17 +72,17 @@ export function Checkout() {
                     </div>
                 </HeaderPaymentContainer>
                 <PaymentsCardList>
-                    <PaymentsCard>
+                    <PaymentsCard onClick={handleClickPayment}>
                         <CreditCard size={16} />
-                        CARTÃO DE CRÉDITO
+                        <p>CARTÃO DE CRÉDITO</p>
                     </PaymentsCard>
-                    <PaymentsCard>
+                    <PaymentsCard onClick={handleClickPayment}>
                         <Bank size={16} />
-                        CARTÃO DE DÉBITO
+                        <p>CARTÃO DE DÉBITO</p>
                     </PaymentsCard>
-                    <PaymentsCard>
+                    <PaymentsCard onClick={handleClickPayment}>
                         <Money size={16} />
-                        DINHEIRO
+                        <p>DINHEIRO</p>
                     </PaymentsCard>
                 </PaymentsCardList>
             </CheckoutPaymentContainer>

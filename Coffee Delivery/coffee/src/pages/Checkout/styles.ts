@@ -137,7 +137,7 @@ export const PaymentsCardList = styled.div`
 }
 `
 
-export const PaymentsCard = styled.div`
+export const PaymentsCard = styled.button`
     display: flex;
     padding: 16px;
     align-items: center;
@@ -155,7 +155,7 @@ export const PaymentsCard = styled.div`
         cursor: pointer;
     }
 
-    &:active{
+    &:focus{
         background:${(props) => props.theme['purple-light']};
         border: 1px solid ${(props) => props.theme['purple']};
     }

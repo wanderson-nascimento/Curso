@@ -1,44 +1,54 @@
 import { ItemsDataType } from '../contexts/OrderFormContext'
 
-export enum ActionTypes{
+export enum ActionTypes {
     ADD_COFFEE = 'ADD_COFFEE',
     UPDATE_COFFEE = 'UPDATE_COFFEE',
-    REMOVE_COFFEE = 'REMOVE_COFFEE', 
-    UPDATE_TOTAL = 'UPDATE_TOTAL', 
+    REMOVE_COFFEE = 'REMOVE_COFFEE',
+    UPDATE_TOTAL = 'UPDATE_TOTAL',
+    ADD_PAYMENT = 'ADD_PAYMENT'
 
 }
 
-export function addCoffeeAction(coffeeItem:ItemsDataType, quantity:number){
-    return{
+export function addCoffeeAction(coffeeItem: ItemsDataType, quantity: number) {
+    return {
         type: ActionTypes.ADD_COFFEE,
-        payload:{
+        payload: {
             coffeeItem,
             quantity
         }
     }
 }
 
-export function updateCoffeeAction(coffeeItemId:number, quantity:number){
-    return{
+export function updateCoffeeAction(coffeeItemId: number, quantity: number) {
+    return {
         type: ActionTypes.UPDATE_COFFEE,
-        payload:{
+        payload: {
             coffeeItemId,
             quantity
         }
     }
 }
 
-export function removeCoffeeAction(coffeeItemId:number){
-    return{
+export function removeCoffeeAction(coffeeItemId: number) {
+    return {
         type: ActionTypes.REMOVE_COFFEE,
-        payload:{
+        payload: {
             coffeeItemId
         }
     }
 }
 
-export function updateTotalizerAction(){
-    return{
+export function updateTotalizerAction() {
+    return {
         type: ActionTypes.UPDATE_TOTAL
+    }
+}
+
+export function addPaymentAction(paymentMethod: string) {
+    return {
+        type: ActionTypes.ADD_PAYMENT,
+        payload: {
+            paymentMethod
+        }
     }
 }
