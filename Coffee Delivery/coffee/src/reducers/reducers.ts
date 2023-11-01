@@ -32,7 +32,7 @@ export function orderFormReducer(state: OrderFormContextType, action: any) {
                         if (!currentItem.price) {
                             return accumulator;
                         }
-                        return accumulator + (parseFloat(currentItem.price.replace(',', '.')) * currentItem.quantity);
+                        return accumulator + (parseFloat(currentItem.price.replace(',', '.')) * (currentItem.quantity??0));
                     }, 0)
                 draft.totalizer = parseFloat(total.toFixed(2));
             })

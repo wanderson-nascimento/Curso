@@ -1,4 +1,4 @@
-import  styled  from 'styled-components'
+import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
  flex: 1;
@@ -68,8 +68,6 @@ span{
 `
 
 export const CoffeeList = styled.div`
-
-/* display:flex; */
 flex-wrap:wrap; 
 flex-shrink: 0;
 
@@ -87,12 +85,11 @@ section{
     align-items: center;
     width: 300px;
     margin-bottom:20px;
-    /* white-space: nowrap; */
 }
 
 svg{ 
     color: ${(props) => props.theme['white']};
-    background: ${(props) => props.theme['yellow-dark']};  
+    background-color: ${(props) => props.theme['yellow-dark']}; 
     border-radius: 1000px;
     padding: 8px;
 }

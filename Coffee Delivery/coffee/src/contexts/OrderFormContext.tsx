@@ -9,7 +9,7 @@ export interface ItemsDataType {
     label: string[]
     description: string | null
     price: string | null
-    quantity: number | null
+    quantity?: number | null
 }
 
 export interface ItemsDataProps {

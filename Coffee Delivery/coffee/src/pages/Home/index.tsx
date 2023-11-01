@@ -4,7 +4,7 @@ import { Timer, ShoppingCart, Package, Coffee } from '@phosphor-icons/react'
 import { CoffeeCard } from '../../components/CoffeeCard'
 import catalogList from '../../assets/catalogList.json'
 
-export function Home() {    
+export function Home() {
     return (
         <HomeContainer>
             <header>
@@ -17,20 +17,20 @@ export function Home() {
                             Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora
                         </span>
                         <CoffeeList>
-                            <section>
-                                <ShoppingCart  size={32} weight="fill" />
+                            <section className="shoppingCart-icon">
+                                <ShoppingCart size={32} weight="fill" />
                                 <p>Compra simples e segura</p>
                             </section>
-                            <section>
-                                <Package size={32} weight="fill"/>
+                            <section className="package-icon">
+                                <Package size={32} weight="fill" />
                                 <p>Embalagem mantém o café intacto</p>
                             </section>
-                            <section>
-                                <Timer  size={32} weight="fill"/>
+                            <section className="timer-icon">
+                                <Timer size={32} weight="fill" />
                                 <p>Entrega rápida e rastreada</p>
                             </section>
-                            <section>
-                                <Coffee weight="fill" size={32}/>
+                            <section className="coffee-icon">
+                                <Coffee weight="fill" size={32} />
                                 <p>O café chega fresquinho até você</p>
                             </section>
                         </CoffeeList>
@@ -41,10 +41,10 @@ export function Home() {
             <h2>Nossos cafés</h2>
             <main>
                 {catalogList.map(item => {
-                    return(
+                    return (
                         <CoffeeCard
                             key={item.id}
-                            item={item} 
+                            item={item}
                         />
                     )
                 })}
