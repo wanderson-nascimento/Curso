@@ -180,3 +180,24 @@ export const Totalizers = styled.div`
         justify-content: space-between;
     }
 `
+export const PlaceOrderButtonContainer = styled.button`
+display: flex;
+padding: 12px 8px;
+justify-content: center;
+align-items: center;
+gap: 4px;
+text-transform: uppercase;
+font-size: 14px;
+font-weight: 700;
+border: none;
+
+&:hover{
+  cursor:pointer;
+  background: ${props => props.theme['yellow-dark']};
+}
+
+border-radius: 6px;
+
+  color: ${props => props.theme['white']};
+  background: ${props => props.theme['yellow']};
+`

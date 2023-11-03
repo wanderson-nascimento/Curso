@@ -32,15 +32,20 @@ export function orderFormReducer(state: OrderFormContextType, action: any) {
                         if (!currentItem.price) {
                             return accumulator;
                         }
-                        return accumulator + (parseFloat(currentItem.price.replace(',', '.')) * (currentItem.quantity??0));
+                        return accumulator + (parseFloat(currentItem.price.replace(',', '.')) * (currentItem.quantity ?? 0));
                     }, 0)
                 draft.totalizer = parseFloat(total.toFixed(2));
             })
 
-            case ActionTypes.ADD_PAYMENT:
-                return produce(state, (draft) => {
-                    draft.paymentData = action.payload.paymentMethod
-                })
+        case ActionTypes.ADD_PAYMENT:
+            return produce(state, (draft) => {
+                draft.paymentData = action.payload.paymentMethod
+            })
+
+        case ActionTypes.ADD_ADRESS:
+            return produce(state, (draft) => {
+                draft.profileData = action.payload.profileData
+            })
 
         default:
             return state

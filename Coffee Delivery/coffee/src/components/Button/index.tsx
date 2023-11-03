@@ -1,4 +1,4 @@
-import { IncrementButtonStyle, PlaceOrderButtonContainer, RemoveButtonStyle, IconButtonContainer, LocationButtonContainer, CartButtonContainer } from "./styles";
+import { IncrementButtonStyle, RemoveButtonStyle, IconButtonContainer, LocationButtonContainer, CartButtonContainer } from "./styles";
 import { Plus, Minus, ShoppingCartSimple, MapPin, Trash } from '@phosphor-icons/react'
 
 interface IncrementButtonProps {
@@ -54,15 +54,5 @@ export function RemoveButton(data:RemoveButtonProps) {
                 <Trash size={16} />
                 <p>REMOVER</p>
         </RemoveButtonStyle>
-    )
-}
-
-
-
-export function PlaceOrderButton() {
-    return (
-        <PlaceOrderButtonContainer>
-            <p>Confirmar pedido</p>
-        </PlaceOrderButtonContainer>
     )
 }

@@ -1,11 +1,12 @@
-import { ItemsDataType } from '../contexts/OrderFormContext'
+import { ItemsDataType, ProfileDataType } from '../contexts/OrderFormContext'
 
 export enum ActionTypes {
     ADD_COFFEE = 'ADD_COFFEE',
     UPDATE_COFFEE = 'UPDATE_COFFEE',
     REMOVE_COFFEE = 'REMOVE_COFFEE',
     UPDATE_TOTAL = 'UPDATE_TOTAL',
-    ADD_PAYMENT = 'ADD_PAYMENT'
+    ADD_PAYMENT = 'ADD_PAYMENT',
+    ADD_ADRESS = 'ADD_ADRESS'
 
 }
 
@@ -49,6 +50,15 @@ export function addPaymentAction(paymentMethod: string) {
         type: ActionTypes.ADD_PAYMENT,
         payload: {
             paymentMethod
+        }
+    }
+}
+
+export function updateProfileDataAction(profileData: ProfileDataType) {
+    return {
+        type: ActionTypes.ADD_ADRESS,
+        payload: {
+            profileData
         }
     }
 }

@@ -147,22 +147,3 @@ export const RemoveButtonStyle = styled.button`
  }
 `
 
-export const PlaceOrderButtonContainer = styled.div`
-display: flex;
-padding: 12px 8px;
-justify-content: center;
-align-items: center;
-gap: 4px;
-text-transform: uppercase;
-font-size: 14px;
-font-weight: 700;
-
-&:hover{
-  cursor:pointer;
-}
-
-border-radius: 6px;
-
-  color: ${props => props.theme['white']};
-  background: ${props => props.theme['yellow']};
-`

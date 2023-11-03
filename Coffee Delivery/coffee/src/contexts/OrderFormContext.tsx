@@ -1,5 +1,5 @@
-import { createContext, useState, ReactNode, useReducer, useEffect } from "react"
-import { addCoffeeAction, updateCoffeeAction, removeCoffeeAction, updateTotalizerAction, addPaymentAction } from "../reducers/actions"
+import { createContext, ReactNode, useReducer, useEffect } from "react"
+import { addCoffeeAction, updateCoffeeAction, removeCoffeeAction, updateTotalizerAction, addPaymentAction, updateProfileDataAction } from "../reducers/actions"
 import { orderFormReducer } from "../reducers/reducers"
 
 export interface ItemsDataType {
@@ -16,7 +16,7 @@ export interface ItemsDataProps {
     item: ItemsDataType
 }
 
-interface ProfileDataType {
+export interface ProfileDataType {
     cep: string | null
     rua: string | null
     numero: string | null
@@ -29,7 +29,7 @@ interface ProfileDataType {
 
 
 export interface OrderFormContextType {
-    profileData: ProfileDataType[] | null;
+    profileData: ProfileDataType | null;
     paymentData: string;
     itemData: ItemsDataType[];
     totalizer: number;
@@ -38,6 +38,7 @@ export interface OrderFormContextType {
     removeCoffee: (data: number) => void;
     updateTotalizer: () => void;
     addPayment: (data: string) => void;
+    updateProfileData: (data:ProfileDataType ) => void;
 }
 
 export const OrderFormContext = createContext({} as OrderFormContextType)
@@ -60,7 +61,8 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         updateCoffeQuantity,
         removeCoffee,
         updateTotalizer,
-        addPayment
+        addPayment,
+        updateProfileData
     },
         (initialState) => {
             const storedStateAsJSON = localStorage.getItem(
@@ -111,6 +113,9 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
         dispatch(addPaymentAction(paymentMethod))
     }
 
+    function updateProfileData(profileData: ProfileDataType) {
+        dispatch(updateProfileDataAction(profileData))
+    }
 
     return (
         <OrderFormContext.Provider
@@ -123,7 +128,8 @@ export function OrderFormContextProvider({ children }: OrderFormContextProviderP
                 updateCoffeQuantity,
                 removeCoffee,
                 updateTotalizer,
-                addPayment
+                addPayment,
+                updateProfileData
             }}
         >
             {children}
