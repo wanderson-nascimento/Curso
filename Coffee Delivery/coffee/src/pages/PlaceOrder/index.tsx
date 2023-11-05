@@ -2,8 +2,12 @@
 import { CurrencyDollar, Timer, MapPin } from '@phosphor-icons/react'
 import Illustration from '../../assets/Illustration.svg'
 import { PlaceOrderContainer } from './styles'
+import { OrderFormContext } from '../../contexts/OrderFormContext'
+import { useContext } from "react"
 
 export function PlaceOrder() {
+    const { profileData, paymentData } = useContext(OrderFormContext);
+
     return (
         <PlaceOrderContainer>
             <header>
@@ -15,8 +19,8 @@ export function PlaceOrder() {
                     <div>
                         <MapPin size={32} weight="fill"/>
                         <section>
-                            <p>Entrega em <strong>Rua João Daniel Martinelli,</strong> </p>
-                            <p> 102Farrapos - Porto Alegre, RS</p>
+                            <p>Entrega em <strong>{`${profileData?.rua}, ${profileData?.numero}`}</strong> </p>
+                            <p>{`${profileData?.bairro} - ${profileData?.cidade}, ${profileData?.uf}`}</p>
                         </section>
                     </div>
                     <div>
@@ -30,7 +34,7 @@ export function PlaceOrder() {
                         <CurrencyDollar size={32} />
                         <section>
                             <p>Pagamento na entrega </p>
-                            <strong>Cartão de Crédito</strong>
+                            <strong>{`${paymentData}`}</strong>
                         </section>
                     </div>
                 </article>

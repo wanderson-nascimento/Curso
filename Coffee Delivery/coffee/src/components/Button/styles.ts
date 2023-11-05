@@ -90,24 +90,6 @@ background: ${props => props.theme['purple-dark']};
   cursor:pointer;
 }
 `
-export const LocationButtonContainer = styled(SecondaryButton)`
-
-padding: 8px;
-justify-content: center;
-align-items: center;
-gap: 4px;
-border-radius: 6px;
-border:none;
-height: 38px;
-
-color: ${props => props.theme['purple-dark']};
-background-color: ${props => props.theme['purple-light']};
-
-&:hover{
-  background-color: ${props => props.theme['white']};
-  cursor:pointer;
-}
-`
 
 export const CartButtonContainer = styled(PrimaryButton)`
 padding: 8px;

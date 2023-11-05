@@ -3,9 +3,12 @@ import { CheckoutContainer, PlaceOrderButtonContainer, Totalizers, CheckoutPlace
 import { CoffeeCardCheckout } from '../../components/CoffeeCard'
 import { OrderFormContext } from '../../contexts/OrderFormContext'
 import { useContext, useState } from "react"
+import { NavLink, redirect, useNavigate } from "react-router-dom";
+import React from "react";
 
 export function Checkout() {
     const { itemData, totalizer, addPayment, profileData, updateProfileData } = useContext(OrderFormContext);
+    const navigate = useNavigate();
 
     function handleClickPayment(event: React.MouseEvent<HTMLElement>) {
         const paymentType = event.currentTarget.textContent;
@@ -28,13 +31,16 @@ export function Checkout() {
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
-        setAdressForm({...adressForm, [name]: value})
+        setAdressForm({ ...adressForm, [name]: value })
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
         updateProfileData(adressForm)
         console.log('Form data', adressForm)
+
+        navigate('/placeorder')
+
     }
 
     return (

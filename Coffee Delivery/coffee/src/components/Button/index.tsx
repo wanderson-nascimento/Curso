@@ -1,5 +1,5 @@
-import { IncrementButtonStyle, RemoveButtonStyle, IconButtonContainer, LocationButtonContainer, CartButtonContainer } from "./styles";
-import { Plus, Minus, ShoppingCartSimple, MapPin, Trash } from '@phosphor-icons/react'
+import { IncrementButtonStyle, RemoveButtonStyle, IconButtonContainer, CartButtonContainer } from "./styles";
+import { Plus, Minus, ShoppingCartSimple, Trash } from '@phosphor-icons/react'
 
 interface IncrementButtonProps {
     coffeeQuantity: number,
@@ -30,13 +30,6 @@ export function IconButton() {
     )
 }
 
-export function LocationButton() {
-    return (
-        <LocationButtonContainer>
-            <MapPin size={22} weight="fill" /> Porto Alegre, RS
-        </LocationButtonContainer>
-    )
-}
 
 export function CartButton() {
     return (

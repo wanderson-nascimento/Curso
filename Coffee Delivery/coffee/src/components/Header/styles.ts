@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {SecondaryButton} from '../Button/styles'
 
 export const HeaderContainer = styled.div`
 
@@ -40,3 +41,21 @@ p{
 }
 `
 
+export const LocationButtonContainer = styled(SecondaryButton)`
+
+padding: 8px;
+justify-content: center;
+align-items: center;
+gap: 4px;
+border-radius: 6px;
+border:none;
+height: 38px;
+
+color: ${props => props.theme['purple-dark']};
+background-color: ${props => props.theme['purple-light']};
+
+&:hover{
+  background-color: ${props => props.theme['white']};
+  cursor:pointer;
+}
+`
