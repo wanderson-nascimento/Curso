@@ -6,8 +6,8 @@ export const HeaderContainer = styled.div`
 
 display: flex;
 align-items: center;
+padding: 32px 160px;
 justify-content: space-between;
-padding: 2rem 10rem;
 width: 1440px;
 
 
