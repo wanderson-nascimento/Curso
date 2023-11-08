@@ -30,4 +30,9 @@ export const NewTransactionButton = styled.button`
     border-radius: 6px;
     background-color: ${props => props.theme['green-500']};
     color: ${props => props.theme['white']};
+
+    &:hover{
+        background-color: ${props => props.theme['green-700']};
+        transition: background-color 0.2s;
+    }
 `
