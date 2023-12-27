@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from 'next/link'
-import { HomeContainer, Product  } from "@/styles/pages/home"
+import { HomeContainer, Product } from "@/styles/pages/home"
+import bolsa from '@/assets/bolsa.svg'
 
 import { stripe } from "../lib/stripe"
 import Stripe from "stripe"
@@ -35,8 +36,11 @@ export default function Home({ products }: HomeProps) {
             <Product className="keen-slider__slide">
               <Image src={product.imageUrl} width={520} height={480} alt="" />
               <footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
+                <main>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </main>
+                <Image src={bolsa} alt="" />
               </footer>
             </Product >
           </Link>

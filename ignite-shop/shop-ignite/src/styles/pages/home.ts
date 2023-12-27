@@ -42,22 +42,39 @@ export const Product = styled('div', {
         opacity: 0,
         transition: 'all 0.2s ease-in-out',
 
-        strong: {
-            fontSize: '$lg',
-            color: '$gray100',
+        main: {
+            display: 'flex',
+            flexDirection: 'column',
+
+            strong: {
+                fontSize: '$lg',
+                color: '$gray100',
+            },
+
+            span: {
+                fontSize: '$xl',
+                fontWeight: 'bold',
+                color: '$green300'
+            },
         },
 
-        span: {
-            fontSize: '$xl',
-            fontWeight: 'bold',
-            color: '$green300'
-        },
-    },
+        img: {
+            display: 'flex',
+            padding: '12px',
+            alignItems: 'center',
+            gap: '12px',
+            borderRadius: '6px',
+            color:'$gray100',
+            backgroundColor: '$green300'
+    }
+
+
+},
 
     '&:hover': {
-        footer: {
-            transform: 'translateY(0%)',
-            opacity: 1
-        }
+    footer: {
+        transform: 'translateY(0%)',
+        opacity: 1
     }
+}
 })
