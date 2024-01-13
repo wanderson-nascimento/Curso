@@ -2,13 +2,16 @@ import Image from "next/image"
 import Link from 'next/link'
 import { HomeContainer, Product } from "@/styles/pages/home"
 import bolsa from '@/assets/bolsa.svg'
+import SideBar from '@/components/sideBar'
 
 import { stripe } from "../lib/stripe"
 import Stripe from "stripe"
 
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
+
+import { useShoppingCart } from 'use-shopping-cart'
 
 interface HomeProps {
   products: {
@@ -28,29 +31,36 @@ export default function Home({ products }: HomeProps) {
     }
   });
 
+  const { addItem } = useShoppingCart()
+
+
+
   return (
-    <HomeContainer ref={sliderRef} className="keen-slider">
-      {products.map(product => {
-        return (
-          <Link key={product.id} href={`product/${product.id}`} prefetch={false}>
-            <Product className="keen-slider__slide">
-              <Image src={product.imageUrl} width={520} height={480} alt="" />
-              <footer>
-                <main>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </main>
-                <Image src={bolsa} alt="" />
-              </footer>
-            </Product >
-          </Link>
-        )
-      })}
-    </HomeContainer>
+    <>
+      <HomeContainer ref={sliderRef} className="keen-slider">
+        {products.map(product => {
+          return (
+            <Link onClick={() => addItem(product)} key={product.id} href={`product/${product.id}`} prefetch={false}>
+              <Product className="keen-slider__slide">
+                <Image src={product.imageUrl} width={520} height={480} alt="" />
+                <footer>
+                  <main>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </main>
+                  <Image src={bolsa} alt="" />
+                </footer>
+              </Product >
+            </Link>
+          )
+        })}
+      </HomeContainer>
+      <SideBar />
+    </>
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetServerSideProps = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price']
   });
@@ -74,6 +84,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       products
     },
-    revalidate: 60 * 60 * 2 // 2 hours,
+    revalidate: 60 * 1 // 1 min,
   }
 }

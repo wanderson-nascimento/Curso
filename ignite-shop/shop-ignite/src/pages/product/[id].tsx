@@ -1,11 +1,17 @@
 import axios from "axios";
+
 import { GetStaticPaths, GetStaticProps } from "next"
 import Image from "next/image";
 import Head from "next/head";
+
 import { useState } from "react";
+
 import Stripe from "stripe";
 import { stripe } from "../../lib/stripe";
+
 import { ImageContainer, ProductContainer, ProductDetails } from "../../styles/pages/product"
+
+
 
 interface ProductProps {
     product: {
@@ -97,6 +103,6 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
                 defaultPriceId: price.id
             }
         },
-        revalidate: 60 * 60 * 1 // 1 hours
+        revalidate: 60 * 1 // 1 min
     }
 }
